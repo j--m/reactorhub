@@ -1,7 +1,12 @@
+<html>
+<head>
 <h1>Testing</h1>
 
 
 <script>
+var tech = GetURLParameter('technology');
+var blog = GetURLParameter('blog');`
+
 function GetURLParameter(sParam)
 {
     var sPageURL = window.location.search.substring(1);
@@ -16,4 +21,20 @@ function GetURLParameter(sParam)
     }
 }​
 
+
 </script>
+<body>
+    <h1>
+      the value for tech is:
+      <script type="text/javascript">
+        document.write(tech)
+      </script>
+      <br>
+      the value for blog is:
+      <script type="text/javascript">
+        document.write(blog)
+      </script>
+    </h1>
+</body>
+</head>
+</html>
