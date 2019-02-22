@@ -74,6 +74,14 @@
         player.stopVideo();
       }
 
+      function clickCounter() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.timer) {
+      localStorage.timer = currentTime;
+    } else {
+      localStorage.timer = 0;
+    }
+}
 
     </script>
   </body>
