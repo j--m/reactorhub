@@ -31,6 +31,15 @@
 
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
+        function storeReatorTime() {
+          if (typeof(Storage) !== "undefined") {
+            if (localStorage.timer) {
+              localStorage.timer = currentTime;
+            } else {
+              localStorage.timer = 0;
+            }
+          }
+        }
         // event.target.playVideo();
         function updateTime() {
           var oldTime = videotime;
@@ -45,6 +54,7 @@
           }
         }
         timeupdater = setInterval(updateTime, 100);
+        reatortimeupdater = setInterval(storeReactorTime,100)
       }
 
 
@@ -74,14 +84,7 @@
         player.stopVideo();
       }
 
-      function clickCounter() {
-  if (typeof(Storage) !== "undefined") {
-    if (localStorage.timer) {
-      localStorage.timer = currentTime;
-    } else {
-      localStorage.timer = 0;
-    }
-}
+
 
     </script>
   </body>
