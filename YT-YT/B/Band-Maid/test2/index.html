@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<script>
+  function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+    obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
+  }
+</script>
+<html>
+  <body>
+    Reactor's tool: PoC - Band-Maid test 0
+    <br>
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <iframe src="https://reactorhub.github.io/reactorhub/YT-YT/B/Band-Maid/test/reactor.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+
+<!--   <iframe src="https://reactorhub.github.io/reactorhub/YT-YT/B/Band-Maid/test/talent.html" frameborder="0" scrolling="no" width="45%" onload="resizeIframe(this)"></iframe> -->
+
+  <!-- 1. Load DailyMotion API (Javascript) -->
+
+<h1><time>00:00:00</time></h1>
+<h2>0</h2>
+
+<script>
+var h1 = document.getElementsByTagName('h1')[0],
+    h2 = document.getElementsByTagName('h2')[0],
+    start = document.getElementById('start'),
+    stop = document.getElementById('stop'),
+    clear = document.getElementById('clear'),
+    seconds = 0, minutes = 0, hours = 0,
+    t,
+    r;
+
+function add() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+
+    h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+//    r = reactor.getCurrentTime();
+    h2.textContent = "H2 Content";
+    timer();
+}
+function timer() {
+    t = setTimeout(add, 1000);
+}
+timer();
+
+
+/* Start button */
+start.onclick = timer;
+
+/* Stop button */
+stop.onclick = function() {
+    clearTimeout(t);
+}
+
+/* Clear button */
+clear.onclick = function() {
+    h1.textContent = "00:00:00";
+    seconds = 0; minutes = 0; hours = 0;
+}
+</script>
+
+<p>
+
+<!-- Buttons for play pause -->
+<!-- <button onclick="func_Play()"> PLAY </button>
+
+<button onclick="func_Pause()"> PAUSE </button>
+
+</p>
+-->
+  </body>
+</html>
