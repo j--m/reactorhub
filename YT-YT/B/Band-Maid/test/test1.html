@@ -3,7 +3,7 @@
   <body>
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
     <div id="player"></div>
-    <div>2 - Current Time: <span id="time"></span></div>
+    <div>3 - Current Time: <span id="time"></span></div>
 
     <div id="talent"></div>
     <div>2 - Current Talent Time: <span id="talenttime"></span></div>
@@ -47,7 +47,7 @@
         talent = new YT.Player('talent', {
           height: '390',
           width: '640',
-          videoId: 'ErCxPH7HQyI',
+          videoId: '9TkHpvaO09c',
           events: {
             'onReady': onTalentReady,
             'onStateChange': onTalentStateChange
@@ -58,7 +58,7 @@
 
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
-        event.target.playVideo();
+        // event.target.playVideo();
         function updateTime() {
           var oldTime = videotime;
           if(player && player.getCurrentTime) {
