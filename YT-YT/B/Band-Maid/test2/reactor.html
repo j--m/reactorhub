@@ -35,6 +35,7 @@
           if (typeof(Storage) !== "undefined") {
             if (localStorage.timer) {
               localStorage.timer = videotime;
+              console.log(localStorage.timer);
             } else {
               localStorage.timer = 0;
             }
@@ -46,7 +47,7 @@
           if(player && player.getCurrentTime) {
             videotime = player.getCurrentTime();
 
-            console.log(videotime);
+            // console.log(videotime);
             document.getElementById("time").innerHTML = videotime;
           }
           if(videotime !== oldTime) {
@@ -54,14 +55,14 @@
           }
         }
         timeupdater = setInterval(updateTime, 100);
-        reatortimeupdater = setInterval(storeReactorTime,100)
+        reactortimeupdater = setInterval(storeReactorTime,100)
       }
 
 
       // when the time changes, this will be called.
       function onProgress(currentTime) {
         if(currentTime > 20) {
-          console.log("the video reached 20 seconds!");
+          // console.log("the video reached 20 seconds!");
         }
       }
 
