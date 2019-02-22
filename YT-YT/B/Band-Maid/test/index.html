@@ -7,7 +7,7 @@
 </script>
 <html>
   <body>
-    Reactor's tool: PoC - Band-Maid test 1
+    Reactor's tool: PoC - Band-Maid test 2
     <br>
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
     <iframe src="https://reactorhub.github.io/reactorhub/YT-YT/B/Band-Maid/test/reactor.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
@@ -25,7 +25,8 @@ var h1 = document.getElementsByTagName('h1')[0],
     stop = document.getElementById('stop'),
     clear = document.getElementById('clear'),
     seconds = 0, minutes = 0, hours = 0,
-    t;
+    t,
+    vt;
 
 var h2 = document.getElementsByTagName('h2')[0]
 
@@ -40,18 +41,18 @@ function add() {
         }
     }
 
-function vidtime() {
+//function vidtime() {
   //ytplayer = document.getElementById("reactor");
-  h2.textContent = reactor.getCurrentTime();
-}
+//  h2.textContent = reactor.getCurrentTime();
+//}
 
     h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
-
+    h2.textContent = reactor.getCurrentTime();
     timer();
 }
 function timer() {
     t = setTimeout(add, 1000);
-    vidtime();
+//    vt = vidtime();
 }
 timer();
 
