@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<script language="javascript" type="text/javascript" src="reactor.html">
+ </script>
+<script>
+  function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+    obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
+  }
+  storagegetter = setInterval(getReactorTime,100);
+  var reactorTime = 0;
+  var reactorPlayer;
+  function getReactorTime(reactorTime) {
+      reactorTime = localStorage.timer;
+      reactorPlayer = JSON.parse(localStorage.getItem('reactorPlayer'));
+      console.log("test1 local storage reads: " + reactorTime);
+      monitorReactorTime(reactorTime);
+  }
+  function monitorReactorTime(reactorTime){
+    if (reactorTime > 10) {
+      console.log("playing for over 20 seconds");
+      player.stopVideo();
+    }
+  }
+</script>
+
+<html>
+  <body>
+    Reactor's tool: PoC - Band-Maid test 5
+    <br>
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <iframe src="https://reactorhub.github.io/reactorhub/YT-YT/B/Band-Maid/test2/reactor.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+<br>
+    the value for number is:
+          <script type="text/javascript">
+            localStorage.timer
+          </script>
+  </body>
+</html>
