@@ -5,6 +5,9 @@
     <div id="player"></div>
     <div>2 - Current Time: <span id="time"></span></div>
 
+    <div id="talent"></div>
+    <div>2 - Current Talent Time: <span id="talenttime"></span></div>
+
     <script>
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -28,6 +31,30 @@
           }
         });
       }
+      ////////////// Talent /////////////////
+
+      var talenttag = document.createElement('script');
+
+      talenttag.src = "https://www.youtube.com/iframe_api";
+      var secondScriptTag = document.getElementsByTagName('script')[1];
+      secondScriptTag.parentNode.insertBefore(talenttag, secondScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var talent;
+      var talentvideotime = 0;
+      function onYouTubeIframeAPIReady() {
+        talent = new YT.Player('talent', {
+          height: '390',
+          width: '640',
+          videoId: 'ErCxPH7HQyI',
+          events: {
+            'onReady': onTalentReady,
+            'onStateChange': onTalentStateChange
+          }
+        });
+      }
+
 
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
@@ -47,12 +74,38 @@
         timeupdater = setInterval(updateTime, 100);
       }
 
+      ///////////////TALENT//////////////////
+      function onTalentReady(event) {
+        event.target.playVideo();
+        function updateTalentTime() {
+          var oldTalentTime = talenttime;
+          if(talent && talent.getCurrentTime) {
+            talenttime = talent.getCurrentTime();
+
+            console.log(talenttime);
+            document.getElementById("talenttime").innerHTML = talenttime;
+          }
+          if(talenttime !== oldTalentTime) {
+            onTalentProgress(talenttime);
+          }
+        }
+        talenttimeupdater = setInterval(updateTalentTime, 100);
+      }
+
       // when the time changes, this will be called.
       function onProgress(currentTime) {
         if(currentTime > 20) {
           console.log("the video reached 20 seconds!");
         }
       }
+
+      /////////////TALENT////////////////
+      function onTalentProgress(currentTime) {
+        if(currentTime > 20) {
+          console.log("the talentvideo reached 20 seconds!");
+        }
+      }
+
 
       // 5. The API calls this function when the player's state changes.
       //    The function indicates that when playing a video (state=1),
@@ -64,8 +117,25 @@
           done = true;
         }
       }
+
+      ///////////////////////TALENT/////////////////
+
+      var talentdone = false;
+      function onTalentStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !talentdone) {
+//           setTimeout(stoptalentVideo, 30000);
+          talentdone = true;
+        }
+      }
+
+
       function stopVideo() {
         player.stopVideo();
+      }
+
+      /////////////////TALENT///////////////
+      function stoptlanetVideo() {
+        talent.stopVideo();
       }
     </script>
   </body>
