@@ -35,6 +35,7 @@
           if (typeof(Storage) !== "undefined") {
             if (localStorage.timer) {
               localStorage.timer = videotime;
+              localStorage.setItem('reactorPlayer', JSON.stringify(player));
               //console.log("local storage is: " + localStorage.timer);
             } else {
               localStorage.timer = 0;
