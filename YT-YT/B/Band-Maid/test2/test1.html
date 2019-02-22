@@ -8,7 +8,13 @@
   var reactorTime = 0;
   function getReactorTime(reactorTime) {
       reactorTime = localStorage.timer;
-      console.log("test1 local storage reads: " + localStorage.timer);
+      console.log("test1 local storage reads: " + reactorTime);
+      monitorReactorTime(reactorTime);
+  }
+  function monitorReactorTime(reactorTime){
+    if (reactorTime > 20) {
+      console.log("playing for over 20 seconds");
+    }
   }
 </script>
 <html>
