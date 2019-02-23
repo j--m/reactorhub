@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <body>
-    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-    <div id="player"></div>
-    <div>4 - Current Time: <span id="time"></span></div>
-
-    <script>
       // 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
+      var talenttag = document.createElement('script');
 
-      tag.src = "https://www.youtube.com/iframe_api";
+      talenttag.src = "https://www.youtube.com/iframe_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
@@ -21,7 +13,7 @@
         player = new YT.Player('player', {
           height: '390',
           width: '640',
-          videoId: 'ErCxPH7HQyI',
+          videoId: '9TkHpvaO09c',
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -35,7 +27,7 @@
           if (typeof(Storage) !== "undefined") {
             if (localStorage.timer) {
               localStorage.timer = videotime;
-              //localStorage.setItem('reactorPlayer', JSON.stringify(player));
+              localStorage.setItem('reactorPlayer', JSON.stringify(player));
               //console.log("local storage is: " + localStorage.timer);
             } else {
               localStorage.timer = 0;
