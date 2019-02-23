@@ -31,7 +31,7 @@
       }
 
       function readTime() {
-        currentTime = localStorage.timeupdater
+        currentTime = localStorage.timer
         console.log("Local Storage Time is: " + currentTime)
       }
       // 5. The API calls this function when the player's state changes.
