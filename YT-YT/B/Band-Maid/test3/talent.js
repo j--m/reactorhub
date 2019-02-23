@@ -32,7 +32,7 @@
 
       function readTime() {
         currentTime = localStorage.timeupdater
-        console.log("Local Storage Time is: " + CurrentTime)
+        console.log("Local Storage Time is: " + currentTime)
       }
       // 5. The API calls this function when the player's state changes.
       //    The function indicates that when playing a video (state=1),
