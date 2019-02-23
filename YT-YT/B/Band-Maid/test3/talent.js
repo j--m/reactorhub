@@ -11,7 +11,7 @@
       function onYouTubeIframeAPIReady() {
         talent = new YT.Player('talent', {
           height: '400',
-          width: '100%',
+          width: '45%',
           videoId: '9TkHpvaO09c',
           events: {
             'onReady': onTalentReady,
