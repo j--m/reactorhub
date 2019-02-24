@@ -1,38 +1,34 @@
-<html>
-<head>
-  <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+<!DOCTYPE html>
 <script>
-var tech = GetURLParameter('technology');
-var blog = GetURLParameter('blog');
-
-
-function GetURLParameter(sParam) {
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split('&');
-    for (var i = 0; i < sURLVariables.length; i++)
-    {
-        var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] == sParam)
-        {
-            return sParameterName[1];
-        }
+  function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+    obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
+    // Also initialize the video command buffer
+    if (typeof(Storage) !== "undefined") {
+      // If there is a local storage timer, then set it to the current time of the reactor video
+      if ( commands.localStorage) {
+          commands.localStorage.setItem('0.00', 'none');
+         // localStorage.commands = "none";
+        //localStorage.setItem('reactorPlayer', JSON.stringify(player));
+        //console.log("local storage is: " +  localStorage.reactortimer);
+      } else {
+        // no local storage timer? create it and set it to 0
+         commands.localStorage.setItem('0.00') = "none";
+      }
     }
-}
-
+  }
 </script>
-<body>
-  <h1>Testing 7</h1>
-    <h1>
-      the value for tech is:
-      <script type="text/javascript">
-        document.write(tech)
-      </script>
-      <br>
-      the value for blog is:
-      <script type="text/javascript">
-        document.write(blog)
-      </script>
-    </h1>
-</body>
-</head>
+  <head>
+    <body>
+      Test 3 <br><br>
+      <div id="reactor"></div>
+<!--      <div>5 - Current Time: <span id="time"></span></div> -->
+<!--     <iframe src="https://reactorhub.github.io/reactorhub/YT-YT/B/Band-Maid/test3/reactor.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe> -->
+        <iframe src="talent.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+
+      <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+
+    </body>
+    <script language="javascript" type="text/javascript" src="reactor.js"> </script>
+  </head>
 </html>
