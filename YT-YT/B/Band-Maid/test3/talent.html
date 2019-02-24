@@ -2,9 +2,9 @@
 <html>
   <body>
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-    <div id="player"></div>
+<!--     <div id="player"></div>
     <div>3 - Current Time: <span id="time"></span></div>
-
+-->
     <script>
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -54,7 +54,7 @@
             videotime = player.getCurrentTime();
 
             console.log("talent time is: " + videotime);
-            document.getElementById("time").innerHTML = videotime;
+            // document.getElementById("time").innerHTML = videotime;
           }
           if(videotime !== oldTime) {
             onProgress(videotime);
