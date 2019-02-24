@@ -15,7 +15,7 @@
           height: '400',
           width: '45%',
           videoId: 'ErCxPH7HQyI',
-          playerVars: { 'autoplay': 0, 'controls': 0,'rel': 0 'autohide':1,'wmode':'opaque','origin':'https://reactorhub.github.io' },
+          playerVars: { 'autoplay': 0, 'controls': 0,'rel': 0, 'autohide':1,'wmode':'opaque','origin':'https://reactorhub.github.io' },
           events: {
             'onReady': onReactorReady,
             'onStateChange': onReactorStateChange
