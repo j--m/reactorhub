@@ -44,7 +44,7 @@
           if(talent && talent.getCurrentTime) {
             talenttime = talent.getCurrentTime();
 
-            console.log(talenttime);
+            console.log("talent log is: " + talenttime);
             //document.getElementById("time").innerHTML = talenttime;
           }
           if(talenttime !== oldTime) {
