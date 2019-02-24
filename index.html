@@ -1,5 +1,47 @@
 <!DOCTYPE html>
 <script>
+function Initialize() {
+  console.log("Initialzing something: ")
+
+ var talentURL = 'talent.html'
+ //?turl=' + talentVideoIDString;
+ // console.log('talent UTL is: ' + talentURL);
+ // console.log("The url string is: " + url_string);
+ // console.log("Reactor Video ID is: " + reactorVideoIDString);
+ // console.log("Talent Video ID is: " + talentVideoIDString);
+}
+function getVideoIdFromURL(url) {
+  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+  var match = url.match(regExp);
+  return (match&&match[7].length==11)? match[7] : false;
+}
+</script>
+  <head>
+    <meta charset="utf-8"/>
+    <body onload="Initialize()">
+      Test 5 <br><br>
+      <div id="reactor"></div>
+<!--      <div>5 - Current Time: <span id="time"></span></div> -->
+        <iframe id="talentframe" src="" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+        <script>
+          var url_string = window.location.href;
+          var url = new URL(url_string);
+          var reactorVideoURL = url.searchParams.get("reactor");
+          var talentVideoURL = url.searchParams.get("talent");
+          var reactorVideoID = getVideoIdFromURL(reactorVideoURL);
+          var reactorVideoIDString = new String(reactorVideoID);
+          var talentVideoID = getVideoIdFromURL(talentVideoURL);
+          var talentVideoIDString = new String(talentVideoID);
+          document.getElementById("talentframe").src = "talent.html?video_id=" + talentVideoIDString;
+        </script>
+
+      <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+
+    </body>
+    <script language="javascript" type="text/javascript" src="reactor.js"> </script>
+  </head>
+</html>
+<script>
   function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
     obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
@@ -17,21 +59,23 @@
       }
     }
   }
-  function Initialize() {
-    console.log("Initialzing something: ")
-  }
+  // function Initialize() {
+  //   console.log("Initialzing something: ")
+  //   var url_string = window.location.href;
+  //   var url = new URL(url_string);
+  //   var reactorVideoURL = url.searchParams.get("reactor");
+  //   var talentVideoURL = url.searchParams.get("talent");
+  //   var reactorVideoID = getVideoIdFromURL(reactorVideoURL);
+  //   var reactorVideoIDString = new String(reactorVideoID);
+  //   var talentVideoID = getVideoIdFromURL(talentVideoURL);
+  //   var talentVideoIDString= new String(talentVideoID);
+  //   console.log("The url string is: " + url_string);
+  //   console.log("Reactor Video ID is: " + reactorVideoIDString);
+  //   console.log("Talent Video ID is: " + talentVideoIDString);
+  // }
+  // function getVideoIdFromURL(url) {
+  //   var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+  //   var match = url.match(regExp);
+  //   return (match&&match[7].length==11)? match[7] : false;
+  // }
 </script>
-  <head>
-    <body onload="Initialize()">
-      Test 5 <br><br>
-      <div id="reactor"></div>
-<!--      <div>5 - Current Time: <span id="time"></span></div> -->
-<!--     <iframe src="https://reactorhub.github.io/reactorhub/YT-YT/B/Band-Maid/test3/reactor.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe> -->
-        <iframe src="talent.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
-
-      <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-
-    </body>
-    <script language="javascript" type="text/javascript" src="reactor.js"> </script>
-  </head>
-</html>
