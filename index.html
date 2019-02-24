@@ -32,7 +32,7 @@ function resizeIframe(obj) {
   <head>
     <meta charset="utf-8"/>
     <body onload="Initialize()">
-      Test 0 <br><br>
+      Test 1 <br><br>
       <div id="reactor"></div>
 <!--      <div>5 - Current Time: <span id="time"></span></div> -->
         <iframe id="talentframe" src="" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
@@ -45,6 +45,7 @@ function resizeIframe(obj) {
           var reactorVideoIDString = new String(reactorVideoID);
           var talentVideoID = getVideoIdFromURL(talentVideoURL);
           var talentVideoIDString = new String(talentVideoID);
+          console.log("Vars are: url_string: " + url_string + " | url: " + url) + " | talentVideoURL: " + talentVideoURL + " | tlentVideoIDString: " + talentVideoIDString;
           document.getElementById("talentframe").src = "talent.html?video_id=" + talentVideoIDString;
           function getVideoIdFromURL(url) {
             var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
