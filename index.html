@@ -25,18 +25,18 @@ function resizeIframe(obj) {
   //     // no local storage timer? create it and set it to 0
   //      commands.localStorage.setItem('0.00') = "none";
   //   }
-  // }
+  // } talent.html?video_id=9TkHpvaO09c
 }
 
 </script>
   <head>
     <meta charset="utf-8"/>
     <body onload="Initialize()">
-      Test 4 <br><br>
+      Test 5 <br><br>
       <div id="reactor"></div>
 <!--      <div>5 - Current Time: <span id="time"></span></div> -->
         <iframe id="talentframe" src="talent.html?video_id=9TkHpvaO09c" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
-        <!-- <script>
+        <script>
           var url_string = window.location.href;
           var url = new URL(url_string);
           var reactorVideoURL = url.searchParams.get("reactor");
@@ -52,7 +52,7 @@ function resizeIframe(obj) {
             var match = url.match(regExp);
             return (match&&match[7].length==11)? match[7] : false;
           }
-        </script> -->
+        </script>
 
       <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
 
