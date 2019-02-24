@@ -14,29 +14,25 @@ function resizeIframe(obj) {
   obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
   obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
   // Also initialize the video command buffer
-  if (typeof(Storage) !== "undefined") {
-    // If there is a local storage timer, then set it to the current time of the reactor video
-    if ( commands.localStorage) {
-        commands.localStorage.setItem('0.00', 'none');
-       // localStorage.commands = "none";
-      //localStorage.setItem('reactorPlayer', JSON.stringify(player));
-      //console.log("local storage is: " +  localStorage.reactortimer);
-    } else {
-      // no local storage timer? create it and set it to 0
-       commands.localStorage.setItem('0.00') = "none";
-    }
-  }
+  // if (typeof(Storage) !== "undefined") {
+  //   // If there is a local storage timer, then set it to the current time of the reactor video
+  //   if ( commands.localStorage) {
+  //       commands.localStorage.setItem('0.00', 'none');
+  //      // localStorage.commands = "none";
+  //     //localStorage.setItem('reactorPlayer', JSON.stringify(player));
+  //     //console.log("local storage is: " +  localStorage.reactortimer);
+  //   } else {
+  //     // no local storage timer? create it and set it to 0
+  //      commands.localStorage.setItem('0.00') = "none";
+  //   }
+  // }
 }
-function getVideoIdFromURL(url) {
-  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-  var match = url.match(regExp);
-  return (match&&match[7].length==11)? match[7] : false;
-}
+
 </script>
   <head>
     <meta charset="utf-8"/>
     <body onload="Initialize()">
-      Test 7 <br><br>
+      Test 0 <br><br>
       <div id="reactor"></div>
 <!--      <div>5 - Current Time: <span id="time"></span></div> -->
         <iframe id="talentframe" src="" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
@@ -50,6 +46,11 @@ function getVideoIdFromURL(url) {
           var talentVideoID = getVideoIdFromURL(talentVideoURL);
           var talentVideoIDString = new String(talentVideoID);
           document.getElementById("talentframe").src = "talent.html?video_id=" + talentVideoIDString;
+          function getVideoIdFromURL(url) {
+            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+            var match = url.match(regExp);
+            return (match&&match[7].length==11)? match[7] : false;
+          }
         </script>
 
       <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
