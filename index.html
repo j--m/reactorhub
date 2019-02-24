@@ -38,11 +38,7 @@ function resizeIframe(obj) {
         <iframe id="talentframe" src="" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
         <script>
         function getVideoIdFromURL(url) {
-          // var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-          // var match = url.match(regExp);
-          // return (match&&match[7].length==11)? match[7] : false;
           console.log("Function url is: " + url);
-
           delimiter = '/',
           start = 3,
           tokens = url.split(delimiter).slice(start),
@@ -72,25 +68,3 @@ function resizeIframe(obj) {
     <script language="javascript" type="text/javascript" src="reactor.js"> </script>
   </head>
 </html>
-<script>
-
-  // function Initialize() {
-  //   console.log("Initialzing something: ")
-  //   var url_string = window.location.href;
-  //   var url = new URL(url_string);
-  //   var reactorVideoURL = url.searchParams.get("reactor");
-  //   var talentVideoURL = url.searchParams.get("talent");
-  //   var reactorVideoID = getVideoIdFromURL(reactorVideoURL);
-  //   var reactorVideoIDString = new String(reactorVideoID);
-  //   var talentVideoID = getVideoIdFromURL(talentVideoURL);
-  //   var talentVideoIDString= new String(talentVideoID);
-  //   console.log("The url string is: " + url_string);
-  //   console.log("Reactor Video ID is: " + reactorVideoIDString);
-  //   console.log("Talent Video ID is: " + talentVideoIDString);
-  // }
-  // function getVideoIdFromURL(url) {
-  //   var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-  //   var match = url.match(regExp);
-  //   return (match&&match[7].length==11)? match[7] : false;
-  // }
-</script>
