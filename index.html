@@ -32,7 +32,7 @@ function resizeIframe(obj) {
   <head>
     <meta charset="utf-8"/>
     <body onload="Initialize()">
-      Test 0 <br><br>
+      Test 1 <br><br>
       <div id="reactor"></div>
 <!--      <div>5 - Current Time: <span id="time"></span></div> -->
         <iframe id="talentframe" src="" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
@@ -50,9 +50,10 @@ function resizeIframe(obj) {
 //          console.log("Vars are: talentVideoIDString: " + talentVideoIDString);
           document.getElementById("talentframe").src = "talent.html?video_id=" + talentVideoIDString;
           function getVideoIdFromURL(url) {
-            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-            var match = url.match(regExp);
-            return (match&&match[7].length==11)? match[7] : false;
+            // var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+            // var match = url.match(regExp);
+            // return (match&&match[7].length==11)? match[7] : false;
+            return "9TkHpvaO09c"
           }
         </script>
 
