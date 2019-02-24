@@ -44,8 +44,8 @@
           if(talent && talent.getCurrentTime) {
             talenttime = talent.getCurrentTime();
 
-            // console.log(talenttime);
-            document.getElementById("time").innerHTML = talenttime;
+            console.log(talenttime);
+            //document.getElementById("time").innerHTML = talenttime;
           }
           if(talenttime !== oldTime) {
             onProgress(talenttime);
