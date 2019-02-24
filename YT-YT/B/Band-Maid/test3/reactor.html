@@ -59,10 +59,29 @@
             onProgress(videotime);
           }
         }
+//CURRENTWORK
+// Get the current time
+//        function readCommands() {
+//           var command = localStorage.commands;
+//          switch(command) {
+//            case "pause":
+//            player.pauseVideo();
+//            break;
+//          case "play":
+//            player.playVideo();
+//            break;
+//          case "Apple":
+//            text = "How you like them apples?";
+//              break;
+//          default:
+//            text = "I have never heard of that fruit...";
+//          }
+//        }
         // call the updateTime function every 100 ms
         timeupdater = setInterval(updateTime, 100);
         // call the storeReactorTime
-        reactortimeupdater = setInterval(storeReactorTime,100)
+        reactortimeupdater = setInterval(storeReactorTime,100);
+        readcommands = setInterval(readCommands,100);
       }
 
 
