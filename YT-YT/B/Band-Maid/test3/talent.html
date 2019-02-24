@@ -21,6 +21,7 @@
         player = new YT.Player('player', {
           height: '390',
           width: '640',
+          playerVars: { 'enablejsapi' : 1, 'autoplay': 0, 'controls': 0,'rel': 0, 'autohide':1,'wmode':'opaque','origin':'https://reactorhub.github.io' },
           videoId: '9TkHpvaO09c',
           events: {
             'onReady': onPlayerReady,
