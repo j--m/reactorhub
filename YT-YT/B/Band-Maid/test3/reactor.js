@@ -53,11 +53,14 @@
           }
         }
         // Parse the url parameters url
-
-        var query = window.location.search.substring(1);
-        var qs = parse_query_string(query);
-        console.log("the query is: " + query);
-        console.log("The parsed query string is: " + qs);
+        var url_string = window.location.href
+        var url = new URL(url_string);
+        var c = url.searchParams.get("c");
+        console.log("The url string is: " + url_string);
+        //var query = window.location.search.substring(1);
+        //var qs = parse_query_string(query);
+        //console.log("the query is: " + query);
+        //console.log("The parsed query string is: " + qs);
         // call the updateTime function every 100 ms
         timeupdater = setInterval(updateTime, 100);
         // call the storeReactorTime
