@@ -56,7 +56,7 @@
         // Parse the url parameters url
         var url_string = window.location.href
         var url = new URL(url_string);
-        var c = url.searchParams.get("c");
+        var c = url.searchParams.get("Control");
         console.log("The url string is: " + url_string);
         console.log("The parsed string is: " + c);
         //var query = window.location.search.substring(1);
