@@ -22,6 +22,7 @@
       }
 //    setTimeout(function(){
       // 4. The API will call this function when the video player is ready.
+      // This is where we set up and kick off all the psudo-event and command monitors
       function onReactorReady(event) {
         function storeReactorTime() {
           if (typeof(Storage) !== "undefined") {
@@ -44,13 +45,19 @@
           if(reactor && reactor.getCurrentTime) {
             reactortime = reactor.getCurrentTime();
 
-            console.log("reactor log is: " + reactortime);
+            // console.log("reactor log is: " + reactortime);
             //document.getElementById("time").innerHTML = reactortime;
           }
           if(reactortime !== oldTime) {
             onProgress(reactortime);
           }
         }
+        // Parse the url parameters url
+
+        var query = window.location.search.substring(1);
+        var qs = parse_query_string(query);
+        console.log("the query is: " + query);
+        console.log("The parsed query string is: " + qs);
         // call the updateTime function every 100 ms
         timeupdater = setInterval(updateTime, 100);
         // call the storeReactorTime
@@ -66,7 +73,7 @@
 
       function readTime() {
         currentTime = localStorage.timer
-        console.log("Local Reactor Storage Time is: " + currentTime)
+        // console.log("Local Reactor Storage Time is: " + currentTime)
       }
       // 5. The API calls this function when the player's state changes.
       //    The function indicates that when playing a video (state=1),
