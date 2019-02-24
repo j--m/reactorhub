@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <body>
-    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-    <div id="player"></div>
-    <div>3 - Current Time: <span id="time"></span></div>
-
-    <script>
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
@@ -15,27 +7,27 @@
 
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
-      var player;
-      var videotime = 0;
+      var reactor;
+      var reactortime = 0;
       function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          height: '390',
-          width: '640',
-          videoId: 'ErCxPH7HQyI',
+        reactor = new YT.Player('reactor', {
+          height: '400',
+          width: '45%',
+          videoId: '9TkHpvaO09c',
           events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            'onReady': onReactorReady,
+            'onStateChange': onReactorStateChange
           }
         });
       }
-
+//    setTimeout(function(){
       // 4. The API will call this function when the video player is ready.
-      function onPlayerReady(event) {
+      function onReactorReady(event) {
         function storeReactorTime() {
           if (typeof(Storage) !== "undefined") {
             // If there is a local storage timer, then set it to the current time of the reactor video
             if ( localStorage.reactortimer) {
-               localStorage.reactortimer = videotime;
+               localStorage.reactortimer = reactortime;
               //localStorage.setItem('reactorPlayer', JSON.stringify(player));
               //console.log("local storage is: " +  localStorage.reactortimer);
             } else {
@@ -48,42 +40,22 @@
         // This function is called every 1/10 sec and updates the
         // local storage timer with the current time of the reactor video
         function updateTime() {
-          var oldTime = videotime;
-          if(player && player.getCurrentTime) {
-            videotime = player.getCurrentTime();
+          var oldTime = reactortime;
+          if(reactor && reactor.getCurrentTime) {
+            reactortime = reactor.getCurrentTime();
 
-            console.log("reactor time is: " + videotime);
-            document.getElementById("time").innerHTML = videotime;
+            console.log("reactor log is: " + reactortime);
+            //document.getElementById("time").innerHTML = reactortime;
           }
-          if(videotime !== oldTime) {
-            onProgress(videotime);
+          if(reactortime !== oldTime) {
+            onProgress(reactortime);
           }
         }
-//CURRENTWORK
-// Get the current time
-//        function readCommands() {
-//           var command = localStorage.commands;
-//          switch(command) {
-//            case "pause":
-//            player.pauseVideo();
-//            break;
-//          case "play":
-//            player.playVideo();
-//            break;
-//          case "Apple":
-//            text = "How you like them apples?";
-//              break;
-//          default:
-//            text = "I have never heard of that fruit...";
-//          }
-//        }
         // call the updateTime function every 100 ms
         timeupdater = setInterval(updateTime, 100);
         // call the storeReactorTime
-        reactortimeupdater = setInterval(storeReactorTime,100);
-        readcommands = setInterval(readCommands,100);
+        reactortimeupdater = setInterval(storeReactorTime,100)
       }
-
 
       // when the time changes, this will be called.
       function onProgress(currentTime) {
@@ -92,27 +64,21 @@
         }
       }
 
-
-
+      function readTime() {
+        currentTime = localStorage.timer
+        console.log("Local Reactor Storage Time is: " + currentTime)
+      }
       // 5. The API calls this function when the player's state changes.
       //    The function indicates that when playing a video (state=1),
       //    the player should play for six seconds and then stop.
       var done = false;
-      function onPlayerStateChange(event) {
+      function onReactorStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING && !done) {
-//           setTimeout(stopVideo, 30000);
+          setTimeout(stopVideo, 600000);
           done = true;
         }
       }
-
-
-
       function stopVideo() {
-        player.stopVideo();
+        reactor.stopVideo();
       }
-
-
-
-    </script>
-  </body>
-</html>
+//    }, 9000);
