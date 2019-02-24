@@ -33,16 +33,20 @@
       function onPlayerReady(event) {
         function storeReactorTime() {
           if (typeof(Storage) !== "undefined") {
-            if (localStorage.timer) {
-              localStorage.timer = videotime;
+            // If there is a local storage timer, then set it to the current time of the reactor video
+            if ( localStorage.reactortimer) {
+               localStorage.reactortimer = videotime;
               //localStorage.setItem('reactorPlayer', JSON.stringify(player));
-              //console.log("local storage is: " + localStorage.timer);
+              //console.log("local storage is: " +  localStorage.reactortimer);
             } else {
-              localStorage.timer = 0;
+              // no local storage timer? create it and set it to 0
+               localStorage.reactortimer = 0;
             }
           }
         }
         // event.target.playVideo();
+        // This function is called every 1/10 sec and updates the
+        // local storage timer with the current time of the reactor video
         function updateTime() {
           var oldTime = videotime;
           if(player && player.getCurrentTime) {
@@ -55,7 +59,9 @@
             onProgress(videotime);
           }
         }
+        // call the updateTime function every 100 ms
         timeupdater = setInterval(updateTime, 100);
+        // call the storeReactorTime
         reactortimeupdater = setInterval(storeReactorTime,100)
       }
 
@@ -63,7 +69,7 @@
       // when the time changes, this will be called.
       function onProgress(currentTime) {
         if(currentTime > 20) {
-          // console.log("the video reached 20 seconds!");
+          console.log("the reactor video reached 20 seconds!");
         }
       }
 
