@@ -32,7 +32,7 @@ function resizeIframe(obj) {
   <head>
     <meta charset="utf-8"/>
     <body onload="Initialize()">
-      Test 2 <br><br>
+      Test 3 <br><br>
       <div id="reactor"></div>
 <!--      <div>5 - Current Time: <span id="time"></span></div> -->
         <iframe id="talentframe" src="" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
@@ -41,11 +41,12 @@ function resizeIframe(obj) {
           var url = new URL(url_string);
           var reactorVideoURL = url.searchParams.get("reactor");
           var talentVideoURL = url.searchParams.get("talent");
+          console.log("index.html: talentVideoURL: " + talentVideoURL);
           var reactorVideoID = getVideoIdFromURL(reactorVideoURL);
           var reactorVideoIDString = new String(reactorVideoID);
           var talentVideoID = getVideoIdFromURL(talentVideoURL);
-          console.log("talentVideoURL: " + talentVideoURL);
-          console.log("talentVideoID: " + talentVideoID);
+          console.log("Index: talentVideoURL: " + talentVideoURL);
+          console.log("Index: talentVideoID: " + talentVideoID);
           var talentVideoIDString = new String(talentVideoID);
 //          console.log("Vars are: talentVideoIDString: " + talentVideoIDString);
           document.getElementById("talentframe").src = "talent.html?video_id=" + talentVideoIDString;
@@ -53,7 +54,8 @@ function resizeIframe(obj) {
             // var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
             // var match = url.match(regExp);
             // return (match&&match[7].length==11)? match[7] : false;
-            return window.location.pathname
+            console.log("Function url is: " + url);
+            return url.pathname
           }
         </script>
 
