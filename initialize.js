@@ -47,10 +47,16 @@ function getVideoIdFromURL(url) {
   if (url.searchParams.get("DMtalent") !== null){
     var DMtalentVideoURL = url.searchParams.get("DMtalent");
   }
+  if (reactorVideoURL !== null){
+    var reactorVideoID = getVideoIdFromURL(reactorVideoURL);
+  }
+  if (YTtalentVideoURL !== null){
+    var YTtalentVideoID = getVideoIdFromURL(YTtalentVideoURL);
+  }
+  if (DMtalentVideoURL !== null){
+    var DMtalentVideoID = getVideoIdFromURL(DMtalentVideoURL);
+  }
 
-  var reactorVideoID = getVideoIdFromURL(reactorVideoURL);
-  var YTtalentVideoID = getVideoIdFromURL(YTtalentVideoURL);
-  var DMtalentVideoID = getVideoIdFromURL(DMtalentVideoURL);
   // These are the two vars we need to use as the videoId for YT.Player objects
   var reactorVideoIDString = new String(reactorVideoID);
   var YTtalentVideoIDString = new String(YTtalentVideoID);
