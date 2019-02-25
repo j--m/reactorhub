@@ -1,3 +1,4 @@
+    console.log("first");
     var tag = document.createElement('script');
     tag.src = "//www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -5,7 +6,7 @@
 
     var reactor;
     var talent;
-
+    console.log("second");
     function onYouTubeIframeAPIReady() {
         reactor = new YT.Player('reactor', {
             height: '350',
@@ -22,9 +23,10 @@
             videoId: 'xmxEuQXTHUU'
         });
     }
-
+    console.log("third");
     function onPlayerReady(event) {
         event.target.playVideo();
+        console.log("onPlayerReady");
     }
 
     function onPlayerStateChange(event) {

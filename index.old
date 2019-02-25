@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<script>
+function Initialize() {
+  console.log("Initialzing something: ")
+
+ var talentURL = 'talent.html'
+}
+function resizeIframe(obj) {
+  obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
+}
+
+</script>
+  <head>
+    <meta charset="utf-8"/>
+    <body onload="Initialize()">
+      Test 3<br><br>
+      <div id="reactor"></div>
+<!--      <div>5 - Current Time: <span id="time"></span></div> -->
+        <iframe id="talentframe" src="" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+        <script>
+
+        function getVideoIdFromURL(url) {
+          console.log("Function url is: " + url);
+          delimiter = '=',
+          start = 1,
+          tokens = url.split(delimiter).slice(start),
+          result = tokens.join(delimiter); // those.that
+          console.log("Function url pathname is: " + result);
+          return result;
+        }
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        // This section reads in the various commands and pops them on the storage stack
+        var reactorVOL = 50;
+        if (url.searchParams.get("reactorVOL")) {
+          reactorVOL = url.searchParams.get("reactorVOL");
+        }
+        var talentVOL = 50;
+        if (url.searchParams.get("talentVOL")) {
+          talentVOL = url.searchParams.get("talentVOL");
+        }
+        console.log("reactor volume is: " + reactorVOL);
+        console.log("talent volume is: " + talentVOL);
+        // This part provides talentVideoIDString (passed in the iframe
+        // and reactorVideoIDString, used directly in the reactor.js loaded in this index.html files.
+
+
+          var reactorVideoURL = url.searchParams.get("reactor");
+          var talentVideoURL = url.searchParams.get("talent");
+          console.log("index.html: talentVideoURL: " + talentVideoURL);
+          var reactorVideoID = getVideoIdFromURL(reactorVideoURL);
+          var reactorVideoIDString = new String(reactorVideoID);
+          var talentVideoID = getVideoIdFromURL(talentVideoURL);
+          console.log("Index: talentVideoURL: " + talentVideoURL);
+          console.log("Index: talentVideoID: " + talentVideoID);
+          var talentVideoIDString = new String(talentVideoID);
+//        This is the part that changes the src to be a 'url' that can be parsed in the talent.html iframe source
+          document.getElementById("talentframe").src = "talent.html?video_id=" + talentVideoIDString + "&talentVolume=" + talentVOL;
+        </script>
+
+      <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+
+    </body>
+    <script language="javascript" type="text/javascript" src="reactor.js"> </script>
+  </head>
+</html>
