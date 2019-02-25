@@ -14,8 +14,8 @@
             videoId: reactorVideoIDString,
             playerVars: { 'enablejsapi' : 1, 'autoplay': 0, 'controls': 1,'rel': 0, 'autohide':1,'wmode':'opaque','origin':'https://reactorhub.github.io' },
             events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
+                'onReady': onReactorReady,
+                'onStateChange': onReactorStateChange
             }
         });
         talent = new YT.Player('talent', {
@@ -23,24 +23,34 @@
 //            width: '425',
             playerVars: { 'enablejsapi' : 1, 'autoplay': 0, 'controls': 1,'rel': 0, 'autohide':1,'wmode':'opaque','origin':'https://reactorhub.github.io' },
             videoId: talentVideoIDString
+            events: {
+                'onReady': onTalentReady,
+                'onStateChange': onTelentStateChange
+            }
         });
     }
     console.log("third");
-    function onPlayerReady(event) {
-        // event.target.playVideo();
-        talent.playVideo();
-        console.log("onPlayerReady");
+    function onReactorReady(event) {
+        event.target.playVideo();
+        // talent.playVideo();
+        console.log("onReactorReady");
     }
 
     console.log("fourth");
     function onTalentReady(event) {
-        //event.target.playVideo();
-        console.log("onPlayerReady");
+        event.target.playVideo();
+        console.log("onTalentReady");
     }
 
-    function onPlayerStateChange(event) {
+    function onReactorStateChange(event) {
         if (event.data == YT.PlayerState.ENDED) {
             console.log("onPlayerStateChange");
             talent.playVideo();
+        }
+    }
+    function onTalentStateChange(event) {
+        if (event.data == YT.PlayerState.ENDED) {
+            console.log("onTalentStateChange");
+            reactor.playVideo();
         }
     }

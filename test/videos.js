@@ -23,7 +23,7 @@ var Videos = (function() {
                 queue.forEach(function($video) {
                     // Create the YT player
                     var player = new YT.Player($video.get(0), {
-                        'width': "100%",
+                        'width': "45%",
                         'height': "100%",
                         'videoId': $video.data("id")
                     });
