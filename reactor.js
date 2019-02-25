@@ -27,7 +27,7 @@
       // 4. The API will call this function when the video player is ready.
       // This is where we set up and kick off all the psudo-event and command monitors
       function onReactorReady(event) {
-
+          reactor.setVolume(reactorVOL);
         function storeReactorTime() {
           if (typeof(Storage) !== "undefined") {
             // If there is a local storage timer, then set it to the current time of the reactor video
