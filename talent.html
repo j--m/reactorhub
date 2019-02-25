@@ -7,12 +7,12 @@
     <script>
       // 2. This code loads the IFrame Player API code asynchronously.
       var url_string = window.location.href;
-      console.log("the url_string is: "+ url_string);
+      console.log("***the url_string is: "+ url_string);
       var url = new URL(url_string);
-      console.log('The talent.html URL String is: ' + url);
+      console.log('***The talent.html URL String is: ' + url);
       var talentVideoID = url.searchParams.get("video_id");
       var talentVol = url.searchParams.get("talentVolume")
-      console.log('The talent Video ID is: ' + talentVideoID);
+      console.log('***The talent Video ID is: ' + talentVideoID);
       var tag = document.createElement('script');
 
       tag.src = "https://www.youtube.com/iframe_api";
@@ -65,7 +65,7 @@
           if(player && player.getCurrentTime) {
             videotime = player.getCurrentTime();
 
-            console.log("talent time is: " + videotime);
+            console.log("***talent time is: " + videotime);
             // document.getElementById("time").innerHTML = videotime;
           }
           if(videotime !== oldTime) {
@@ -101,7 +101,7 @@
       // when the time changes, this will be called.
       function onProgress(currentTime) {
         if(currentTime > 20) {
-          console.log("the talent video reached 20 seconds!");
+          console.log("***the talent video reached 20 seconds!");
         }
       }
 

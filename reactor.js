@@ -27,7 +27,7 @@
       // 4. The API will call this function when the video player is ready.
       // This is where we set up and kick off all the psudo-event and command monitors
       function onReactorReady(event) {
-        console.log("*** Reactor Vol is: " + reactorVOL);
+        console.log("###Reactor Vol is: " + reactorVOL);
           reactor.setVolume(reactorVOL);
         function storeReactorTime() {
           if (typeof(Storage) !== "undefined") {
@@ -72,7 +72,7 @@
       // when the time changes, this will be called.
       function onProgress(currentTime) {
         if(currentTime > 20) {
-          console.log("the reactor video reached 20 seconds!");
+          console.log("###the reactor video reached 20 seconds!");
         }
       }
 
