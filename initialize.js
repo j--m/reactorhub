@@ -8,6 +8,18 @@ function resizeIframe(obj) {
 var url_string = window.location.href;
 var url = new URL(url_string);
 // This section reads in the various commands and pops them on the storage stack
+// Reactor start time
+if (url.searchParams.get("Start") !== null) {
+  reactorStart = url.searchParams.get("Start");
+  console.log("Reactor Start Time: " + url.searchParams.get("Start"));
+  var hms = reactorStart;   // your input string
+  var a = hms.split(':'); // split it at the colons
+
+  // minutes are worth 60 seconds. Hours are worth 60 minutes.
+  var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+  console.log(seconds);
+  localStorage.setItem("reactorStart", seconds );
+}
 // Control commands
 if (url.searchParams.get("Control") !== null) {
   reactorVOL = url.searchParams.get("Control");
