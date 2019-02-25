@@ -38,6 +38,6 @@ function getVideoIdFromURL(url) {
   // Save to local Storage
   localStorage.setItem("reactorVideoID", reactorVideoIDString );
   localStorage.setItem("talentVideoID", talentVideoIDString );
-  console.log("Index: talentVideoURL: " + talentVideoURLString);
+  console.log("Index: talentVideoURL: " + talentVideoIDString);
   console.log("Index: reactorVideoID: " + reactorVideoIDString);
   // console.log("talentVideoURL: " + talentVideoURL);
