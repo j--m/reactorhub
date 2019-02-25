@@ -13,12 +13,13 @@ var reactorVOL = 50;
 if (url.searchParams.get("reactorVOL")) {
   reactorVOL = url.searchParams.get("reactorVOL");
 }
-var talentVOL = 50;
+var YTtalentVOL = 50;
 // Youtube talent video
 if (url.searchParams.get("YTtalentVOL")) {
   talentVOL = url.searchParams.get("YTtalentVOL");
 }
 // DailyMotion talent video
+var DMtalentVOL = 50;
 if (url.searchParams.get("DMtalentVOL")) {
   talentVOL = url.searchParams.get("DMtalentVOL");
 }
