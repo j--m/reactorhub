@@ -47,13 +47,13 @@ function getVideoIdFromURL(url) {
   if (url.searchParams.get("DMtalent") !== null){
     var DMtalentVideoURL = url.searchParams.get("DMtalent");
   }
-  if (reactorVideoURL !== null){
+  if (reactorVideoURL){
     var reactorVideoID = getVideoIdFromURL(reactorVideoURL);
   }
-  if (YTtalentVideoURL !== null){
+  if (YTtalentVideoURL){
     var YTtalentVideoID = getVideoIdFromURL(YTtalentVideoURL);
   }
-  if (DMtalentVideoURL !== null){
+  if (DMtalentVideoURL ){
     var DMtalentVideoID = getVideoIdFromURL(DMtalentVideoURL);
   }
 
