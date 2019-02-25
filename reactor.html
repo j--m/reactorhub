@@ -23,7 +23,7 @@
         player = new YT.Player('reactor', {
           // height: '400',
           // width: '100%',
-          playerVars: { 'enablejsapi' : 1, 'autoplay': 0, 'controls': 1,'rel': 0, 'autohide':1,'wmode':'opaque','origin':'https://reactorhub.github.io' },
+          playerVars: { 'enablejsapi' : 1, 'autoplay': 0, 'controls': 1,'rel': 0, 'autohide':1,'wmode':'opaque','origin':'https://reactorhub.github.io','start' : 180 },
           videoId: localStorage.getItem("reactorVideoID"),
           // start: parseInt(localStorage.getItem("reactorStart")),
           events: {
