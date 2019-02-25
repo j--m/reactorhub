@@ -23,9 +23,6 @@
 //            width: '425',
             playerVars: { 'enablejsapi' : 1, 'autoplay': 0, 'controls': 1,'rel': 0, 'autohide':1,'wmode':'opaque','origin':'https://reactorhub.github.io' },
             videoId: talentVideoIDString
-            events: {
-                'onReady': onTalentReady
-            }
         });
     }
     console.log("third");
