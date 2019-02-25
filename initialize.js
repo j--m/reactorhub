@@ -38,10 +38,16 @@ function getVideoIdFromURL(url) {
   console.log("Function url pathname is: " + result);
   return result;
 }
+  if (url.searchParams.get("reactor") !== null){
+    var reactorVideoURL = url.searchParams.get("reactor");
+  }
+  if (url.searchParams.get("YTtalent") !== null) {
+    var YTtalentVideoURL = url.searchParams.get("YTtalent");
+  }
+  if (url.searchParams.get("DMtalent") !== null){
+    var DMtalentVideoURL = url.searchParams.get("DMtalent");
+  }
 
-  var reactorVideoURL = url.searchParams.get("reactor");
-  var YTtalentVideoURL = url.searchParams.get("YTtalent");
-  var DMtalentVideoURL = url.searchParams.get("DMtalent");
   var reactorVideoID = getVideoIdFromURL(reactorVideoURL);
   var YTtalentVideoID = getVideoIdFromURL(YTtalentVideoURL);
   var DMtalentVideoID = getVideoIdFromURL(DMtalentVideoURL);
