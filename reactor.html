@@ -16,6 +16,7 @@
 
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
+      console.log("Reactor Frame Start time is: " +localStorage.getItem("reactorStart"));
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('reactor', {
