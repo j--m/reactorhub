@@ -10,24 +10,24 @@ var url = new URL(url_string);
 // This section reads in the various commands and pops them on the storage stack
 // default volume
 var reactorVOL = 50;
-if (url.searchParams.get("reactorVOL")) {
+if (url.searchParams.get("reactorVOL") !== null) {
   reactorVOL = url.searchParams.get("reactorVOL");
 }
 var YTtalentVOL = 50;
 // Youtube talent video
-if (url.searchParams.get("YTtalentVOL")) {
+if (url.searchParams.get("YTtalentVOL") !== null) {
   talentVOL = url.searchParams.get("YTtalentVOL");
 }
 // DailyMotion talent video
 console.log("DMtalentVOL is: " + url.searchParams.get("DMtalentVOL"));
 var DMtalentVOL = 50;
-if (url.searchParams.get("DMtalentVOL")) {
+if (url.searchParams.get("DMtalentVOL") !== null) {
   talentVOL = url.searchParams.get("DMtalentVOL");
 }
 
 console.log("starting reactor volume is: " + reactorVOL);
 console.log("starting Youtube talent volume is: " + YTtalentVOL);
-console.log("starting Youtube talent volume is: " + DMtalentVOL);
+console.log("starting DailyMotion talent volume is: " + DMtalentVOL);
 // This part provides talentVideoIDString used in the combined.js loaded in this index.html.
 function getVideoIdFromURL(url) {
   console.log("Function url is: " + url);
