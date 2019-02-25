@@ -8,6 +8,12 @@ function resizeIframe(obj) {
 var url_string = window.location.href;
 var url = new URL(url_string);
 // This section reads in the various commands and pops them on the storage stack
+// Control commands
+if (url.searchParams.get("Control") !== null) {
+  reactorVOL = url.searchParams.get("Control");
+  console.log("Control list is: " + url.searchParams.get("Control"));
+  localStorage.setItem("reactorVOL", reactorVOL );
+}
 // default volume
 var reactorVOL = 50;
 if (url.searchParams.get("reactorVOL") !== null) {
