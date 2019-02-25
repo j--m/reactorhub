@@ -17,6 +17,7 @@ if (url.searchParams.get("reactorVOL") !== null) {
 var YTtalentVOL = 50;
 // Youtube talent video
 if (url.searchParams.get("YTtalentVOL") !== null) {
+  console.log("inside YTtalentVOL search param and add to local Storage")
   talentVOL = url.searchParams.get("YTtalentVOL");
   localStorage.setItem("YTtalentVOL", YTtalentVOL );
 }
