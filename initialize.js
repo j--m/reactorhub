@@ -25,7 +25,7 @@ if (url.searchParams.get("Start") !== null) {
 if (url.searchParams.get("Control") !== null) {
   controlList = url.searchParams.get("Control");
   console.log("Control list is: " + controlList);
-
+  //3:08,pause;3:15,play;3:20,pause;3:30,play
   //localStorage.setItem("reactorVOL", reactorVOL );
 }
 // default volume
@@ -91,4 +91,5 @@ function getVideoIdFromURL(url) {
   console.log("Index: YTtalentVideoURL: " + YTtalentVideoIDString);
   console.log("Index: DMtalentVideoID: " + DMtalentVideoIDString);
   console.log("Index: reactorVideoID: " + reactorVideoIDString);
+  console.log("Storage Length is: " + localStorage);
   // console.log("talentVideoURL: " + talentVideoURL);
