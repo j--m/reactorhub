@@ -9,8 +9,8 @@
     console.log("second");
     function onYouTubeIframeAPIReady() {
         reactor = new YT.Player('reactor', {
-            height: '350',
-            width: '425',
+//            height: '350',
+//            width: '425',
             videoId: 'OdT9z-JjtJk',
             events: {
                 'onReady': onPlayerReady,
@@ -18,8 +18,8 @@
             }
         });
         talent = new YT.Player('talent', {
-            height: '350',
-            width: '425',
+//            height: '350',
+//            width: '425',
             videoId: 'xmxEuQXTHUU'
         });
     }
@@ -31,6 +31,7 @@
 
     function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.ENDED) {
+            console.log("onPlayerStateChange");
             talent.playVideo();
         }
     }
