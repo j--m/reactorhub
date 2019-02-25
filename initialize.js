@@ -12,11 +12,13 @@ var url = new URL(url_string);
 var reactorVOL = 50;
 if (url.searchParams.get("reactorVOL") !== null) {
   reactorVOL = url.searchParams.get("reactorVOL");
+  localStorage.setItem("reactorVOL", reactorVOL );
 }
 var YTtalentVOL = 50;
 // Youtube talent video
 if (url.searchParams.get("YTtalentVOL") !== null) {
   talentVOL = url.searchParams.get("YTtalentVOL");
+  localStorage.setItem("YTtalentVOL", YTtalentVOL );
 }
 // DailyMotion talent video
 console.log("DMtalentVOL is: " + url.searchParams.get("DMtalentVOL"));

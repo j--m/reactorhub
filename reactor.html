@@ -35,6 +35,7 @@
 //        setTimeout(function(){
           event.target.playVideo();
           console.log("reactor ready: " + localStorage.getItem("reactorVideoID"));
+          player.setVolume(localStorage.getItem("reactorVOL"));
 //        }, 189000)
       }
 
