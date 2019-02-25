@@ -14,7 +14,7 @@ function resizeIframe(obj) {
   <head>
     <meta charset="utf-8"/>
     <body onload="Initialize()">
-      Test 0 <br><br>
+      Test 1 <br><br>
       <div id="reactor"></div>
 <!--      <div>5 - Current Time: <span id="time"></span></div> -->
         <iframe id="talentframe" src="" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
@@ -38,7 +38,7 @@ function resizeIframe(obj) {
         }
         var talentVOL = 50;
         if (url.searchParams.get("talentVOL")) {
-          reactorVOL = url.searchParams.get("talentVOL");
+          talentVOL = url.searchParams.get("talentVOL");
         }
         console.log("reactor volume is: " + reactorVOL);
         console.log("talent volume is: " + talentVOL);
