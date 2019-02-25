@@ -13,8 +13,7 @@ if (url.searchParams.get("talentVOL")) {
 }
 console.log("reactor volume is: " + reactorVOL);
 console.log("talent volume is: " + talentVOL);
-// This part provides talentVideoIDString (passed in the iframe
-// and reactorVideoIDString, used directly in the reactor.js loaded in this index.html files.
+// This part provides talentVideoIDString used in the combined.js loaded in this index.html.
 function getVideoIdFromURL(url) {
   console.log("Function url is: " + url);
   delimiter = '=',
@@ -28,9 +27,12 @@ function getVideoIdFromURL(url) {
   var reactorVideoURL = url.searchParams.get("reactor");
   var talentVideoURL = url.searchParams.get("talent");
   var reactorVideoID = getVideoIdFromURL(reactorVideoURL);
-  var reactorVideoIDString = new String(reactorVideoID);
   var talentVideoID = getVideoIdFromURL(talentVideoURL);
+  // These are the two vars we need to use as the videoId for YT.Player objects
+  var reactorVideoIDString = new String(reactorVideoID);
   var talentVideoIDString = new String(talentVideoID);
-  console.log("Index: talentVideoURL: " + talentVideoURL);
-  console.log("Index: talentVideoID: " + talentVideoID);
-  console.log("talentVideoURL: " + talentVideoURL);
+
+
+  // console.log("Index: talentVideoURL: " + talentVideoURL);
+  // console.log("Index: talentVideoID: " + talentVideoID);
+  // console.log("talentVideoURL: " + talentVideoURL);
