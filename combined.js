@@ -1,6 +1,3 @@
-<div id="reactor"></div>
-<div id="talent"></div>
-<script>
     var tag = document.createElement('script');
     tag.src = "//www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -35,4 +32,3 @@
             talent.playVideo();
         }
     }
-</script>
