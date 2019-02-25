@@ -19,6 +19,7 @@ if (url.searchParams.get("YTtalentVOL")) {
   talentVOL = url.searchParams.get("YTtalentVOL");
 }
 // DailyMotion talent video
+console.log("DMtalentVOL is: " + url.searchParams.get("DMtalentVOL"));
 var DMtalentVOL = 50;
 if (url.searchParams.get("DMtalentVOL")) {
   talentVOL = url.searchParams.get("DMtalentVOL");
