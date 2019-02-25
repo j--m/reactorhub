@@ -23,9 +23,10 @@ if (url.searchParams.get("Start") !== null) {
 }
 // Control commands
 if (url.searchParams.get("Control") !== null) {
-  reactorVOL = url.searchParams.get("Control");
-  console.log("Control list is: " + url.searchParams.get("Control"));
-  localStorage.setItem("reactorVOL", reactorVOL );
+  controlList = url.searchParams.get("Control");
+  console.log("Control list is: " + controlList);
+
+  //localStorage.setItem("reactorVOL", reactorVOL );
 }
 // default volume
 var reactorVOL = 50;
