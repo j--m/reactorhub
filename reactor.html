@@ -17,6 +17,7 @@
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
       //console.log("Reactor Frame Start time is: " +localStorage.getItem("reactorStart"));
+      var videotime = 0;
       var player;
       function onYouTubeIframeAPIReady() {
         console.log("FUNCTION: Reactor Frame Start time is: " + localStorage.getItem("reactorStart") + "Int: " + parseInt(localStorage.getItem("reactorStart")));
@@ -38,10 +39,45 @@
       function onPlayerReady(event) {
 //        setTimeout(function(){
           event.target.playVideo();
-          console.log("reactor ready: " + localStorage.getItem("reactorVideoID"));
+          // console.log("reactor ready: " + localStorage.getItem("reactorVideoID"));
           player.setVolume(localStorage.getItem("reactorVOL"));
-          console.log("Reactor Frame Start time is: " +localStorage.getItem("reactorStart"));
+          // console.log("Reactor Frame Start time is: " +localStorage.getItem("reactorStart"));
 //        }, 189000)
+        if (typeof(Storage) !== "undefined") {
+              // If there is a local storage timer, then set it to the current time of the talent video
+              if ( localStorage.reactortimer) {
+                localStorage.reactortimer = videotime;
+                //localStorage.setItem('talentPlayer', JSON.stringify(player));
+                //console.log("local storage is: " +  localStorage.talenttimer);
+              } else {
+                // no local storage timer? create it and set it to 0
+                localStorage.reactortimer = 0;
+              }
+            }
+            console.log("Reator time is: " + videotime);
+
+            function updateTime() {
+              var oldTime = videotime;
+              if(player && player.getCurrentTime) {
+                videotime = player.getCurrentTime();
+
+                console.log("talent time is: " + videotime);
+                // document.getElementById("time").innerHTML = videotime;
+              }
+              if(videotime !== oldTime) {
+                onProgress(videotime);
+              }
+            }
+
+            function readCommands() {
+              console.log("Inside read commands function");
+            }
+
+            // call the updateTime function every 100 ms
+            timeupdater = setInterval(updateTime, 100);
+            // call the storeReactorTime
+            // talenttimeupdater = setInterval(storeReactorTime,100);
+            var readcommands = setInterval(readCommands,100);
       }
 
       // 5. The API calls this function when the player's state changes.
