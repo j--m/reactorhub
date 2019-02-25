@@ -19,13 +19,13 @@
       //console.log("Reactor Frame Start time is: " +localStorage.getItem("reactorStart"));
       var player;
       function onYouTubeIframeAPIReady() {
-        console.log("FUNCTION: Reactor Frame Start time is: " + localStorage.getItem("reactorStart"));
+        console.log("FUNCTION: Reactor Frame Start time is: " + localStorage.getItem("reactorStart") + "Int: " + parseInt(localStorage.getItem("reactorStart")));
         player = new YT.Player('reactor', {
           // height: '400',
           // width: '100%',
           playerVars: { 'enablejsapi' : 1, 'autoplay': 0, 'controls': 1,'rel': 0, 'autohide':1,'wmode':'opaque','origin':'https://reactorhub.github.io' },
           videoId: localStorage.getItem("reactorVideoID"),
-          start: parseInt(localStorage.getItem("reactorStart")),
+          // start: parseInt(localStorage.getItem("reactorStart")),
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
