@@ -25,7 +25,7 @@ function resizeIframe(obj) {
   //     // no local storage timer? create it and set it to 0
   //      commands.localStorage.setItem('0.00') = "none";
   //   }
-  // } talent.html?video_id=9TkHpvaO09c
+  // }
 }
 
 </script>
@@ -39,8 +39,8 @@ function resizeIframe(obj) {
         <script>
         function getVideoIdFromURL(url) {
           console.log("Function url is: " + url);
-          delimiter = '/',
-          start = 3,
+          delimiter = '=',
+          start = 1,
           tokens = url.split(delimiter).slice(start),
           result = tokens.join(delimiter); // those.that
           console.log("Function url pathname is: " + result);
