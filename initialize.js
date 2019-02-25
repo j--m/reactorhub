@@ -9,6 +9,7 @@ var url_string = window.location.href;
 var url = new URL(url_string);
 // This section reads in the various commands and pops them on the storage stack
 // Reactor start time
+console.log("Start parameter is: " + url.searchParams.get("Start"));
 if (url.searchParams.get("Start") !== null) {
   reactorStart = url.searchParams.get("Start");
   console.log("Reactor Start Time: " + url.searchParams.get("Start"));
