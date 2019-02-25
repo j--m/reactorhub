@@ -13,7 +13,7 @@
       var reactortime = 0;
       function onYouTubeIframeAPIReady() {
         reactor = new YT.Player('reactor', {
-          height: '400',
+          height: '45%',
           width: '45%',
           videoId: reactorVideoIDString,
           playerVars: { 'enablejsapi' : 1, 'autoplay': 0, 'controls': 1,'rel': 0, 'autohide':1,'wmode':'opaque','origin':'https://reactorhub.github.io' },
