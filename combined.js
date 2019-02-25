@@ -28,7 +28,7 @@
     console.log("third");
     function onPlayerReady(event) {
         // event.target.playVideo();
-        talent.startVideo();
+        talent.playVideo();
         console.log("onPlayerReady");
     }
 
