@@ -1,1 +1,36 @@
 console.log("Initialize");
+var url_string = window.location.href;
+var url = new URL(url_string);
+// This section reads in the various commands and pops them on the storage stack
+var reactorVOL = 50;
+var talentVOL = 50;
+if (url.searchParams.get("reactorVOL")) {
+  reactorVOL = url.searchParams.get("reactorVOL");
+}
+var talentVOL = 50;
+if (url.searchParams.get("talentVOL")) {
+  talentVOL = url.searchParams.get("talentVOL");
+}
+console.log("reactor volume is: " + reactorVOL);
+console.log("talent volume is: " + talentVOL);
+// This part provides talentVideoIDString (passed in the iframe
+// and reactorVideoIDString, used directly in the reactor.js loaded in this index.html files.
+function getVideoIdFromURL(url) {
+  console.log("Function url is: " + url);
+  delimiter = '=',
+  start = 1,
+  tokens = url.split(delimiter).slice(start),
+  result = tokens.join(delimiter); // those.that
+  console.log("Function url pathname is: " + result);
+  return result;
+}
+
+  var reactorVideoURL = url.searchParams.get("reactor");
+  var talentVideoURL = url.searchParams.get("talent");
+  var reactorVideoID = getVideoIdFromURL(reactorVideoURL);
+  var reactorVideoIDString = new String(reactorVideoID);
+  var talentVideoID = getVideoIdFromURL(talentVideoURL);
+  var talentVideoIDString = new String(talentVideoID);
+  console.log("Index: talentVideoURL: " + talentVideoURL);
+  console.log("Index: talentVideoID: " + talentVideoID);
+  console.log("talentVideoURL: " + talentVideoURL);
