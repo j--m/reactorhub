@@ -92,8 +92,9 @@ function getVideoIdFromURL(url) {
   console.log("Index: DMtalentVideoID: " + DMtalentVideoIDString);
   console.log("Index: reactorVideoID: " + reactorVideoIDString);
   console.log("Storage Length is: " + localStorage.length);
+  console.log("****************************************************")
   var i;
-  for (i = 0; i < localStorage.lenght; i++) {
+  for (i = 0; i < localStorage.length; i++) {
     console.log("storage #" + i + "is: " + localStorage.key(i));
   }
   // console.log("talentVideoURL: " + talentVideoURL);
