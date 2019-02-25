@@ -35,8 +35,9 @@ function getVideoIdFromURL(url) {
   // These are the two vars we need to use as the videoId for YT.Player objects
   var reactorVideoIDString = new String(reactorVideoID);
   var talentVideoIDString = new String(talentVideoID);
-
-
-  // console.log("Index: talentVideoURL: " + talentVideoURL);
-  // console.log("Index: talentVideoID: " + talentVideoID);
+  // Save to local Storage
+  localStorage.setItem("reactorVideoID", reactorVideoIDString );
+  localStorage.setItem("talentVideoID", talentVideoIDString );
+  console.log("Index: talentVideoURL: " + talentVideoURLString);
+  console.log("Index: reactorVideoID: " + reactorVideoIDString);
   // console.log("talentVideoURL: " + talentVideoURL);
