@@ -1,22 +1,31 @@
 console.log("Initialize");
+// to autoresize iframes
 function resizeIframe(obj) {
   obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
   obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
 }
+// get the url parameters
 var url_string = window.location.href;
 var url = new URL(url_string);
 // This section reads in the various commands and pops them on the storage stack
+// default volume
 var reactorVOL = 50;
-var talentVOL = 50;
 if (url.searchParams.get("reactorVOL")) {
   reactorVOL = url.searchParams.get("reactorVOL");
 }
 var talentVOL = 50;
-if (url.searchParams.get("talentVOL")) {
-  talentVOL = url.searchParams.get("talentVOL");
+// Youtube talent video
+if (url.searchParams.get("YTtalentVOL")) {
+  talentVOL = url.searchParams.get("YTtalentVOL");
 }
-console.log("reactor volume is: " + reactorVOL);
-console.log("talent volume is: " + talentVOL);
+// DailyMotion talent video
+if (url.searchParams.get("DMtalentVOL")) {
+  talentVOL = url.searchParams.get("DMtalentVOL");
+}
+
+console.log("starting reactor volume is: " + reactorVOL);
+console.log("starting Youtube talent volume is: " + YTtalentVOL);
+console.log("starting Youtube talent volume is: " + DMtalentVOL);
 // This part provides talentVideoIDString used in the combined.js loaded in this index.html.
 function getVideoIdFromURL(url) {
   console.log("Function url is: " + url);
@@ -29,15 +38,20 @@ function getVideoIdFromURL(url) {
 }
 
   var reactorVideoURL = url.searchParams.get("reactor");
-  var talentVideoURL = url.searchParams.get("talent");
+  var YTtalentVideoURL = url.searchParams.get("YTtalent");
+  var DMtalentVideoURL = url.searchParams.get("DMtalent");
   var reactorVideoID = getVideoIdFromURL(reactorVideoURL);
-  var talentVideoID = getVideoIdFromURL(talentVideoURL);
+  var YTtalentVideoID = getVideoIdFromURL(YTtalentVideoURL);
+  var DMtalentVideoID = getVideoIdFromURL(DMtalentVideoURL);
   // These are the two vars we need to use as the videoId for YT.Player objects
   var reactorVideoIDString = new String(reactorVideoID);
-  var talentVideoIDString = new String(talentVideoID);
+  var YTtalentVideoIDString = new String(YTtalentVideoID);
+  var DMtalentVideoIDString = new String(DMtalentVideoID);
   // Save to local Storage
   localStorage.setItem("reactorVideoID", reactorVideoIDString );
-  localStorage.setItem("talentVideoID", talentVideoIDString );
-  console.log("Index: talentVideoURL: " + talentVideoIDString);
+  localStorage.setItem("YTtalentVideoID", YTtalentVideoIDString );
+  localStorage.setItem("DMtalentVideoID", DMtalentVideoIDString );
+  console.log("Index: YTtalentVideoURL: " + YTtalentVideoIDString);
+  console.log("Index: DMtalentVideoID: " + DMtalentVideoIDString);
   console.log("Index: reactorVideoID: " + reactorVideoIDString);
   // console.log("talentVideoURL: " + talentVideoURL);
