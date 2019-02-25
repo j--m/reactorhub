@@ -12,14 +12,16 @@
 //            height: '350',
 //            width: '425',
             videoId: 'OdT9z-JjtJk',
+            playerVars: { 'enablejsapi' : 1, 'autoplay': 0, 'controls': 1,'rel': 0, 'autohide':1,'wmode':'opaque','origin':'https://reactorhub.github.io' },
             events: {
                 'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
+                'onStateChange': onPlayerStateChange
             }
         });
         talent = new YT.Player('talent', {
 //            height: '350',
 //            width: '425',
+            playerVars: { 'enablejsapi' : 1, 'autoplay': 0, 'controls': 1,'rel': 0, 'autohide':1,'wmode':'opaque','origin':'https://reactorhub.github.io' },
             videoId: 'xmxEuQXTHUU'
         });
     }
