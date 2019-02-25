@@ -27,7 +27,8 @@
     }
     console.log("third");
     function onPlayerReady(event) {
-        event.target.playVideo();
+        // event.target.playVideo();
+        talent.startVideo();
         console.log("onPlayerReady");
     }
 
