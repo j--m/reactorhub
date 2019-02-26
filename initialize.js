@@ -1,4 +1,4 @@
-console.log("Initialize");
+//console.log("Initialize");
 // to autoresize iframes
 function resizeIframe(obj) {
   obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
@@ -12,7 +12,7 @@ var url_string = window.location.href;
 var url = new URL(url_string);
 // This section reads in the various commands and pops them on the storage stack
 // Reactor start time
-console.log("Start parameter is: " + url.searchParams.get("Start"));
+//console.log("Start parameter is: " + url.searchParams.get("Start"));
 if (url.searchParams.get("Start") !== null) {
   reactorStart = url.searchParams.get("Start");
   console.log("Reactor Start Time: " + url.searchParams.get("Start"));
@@ -21,7 +21,7 @@ if (url.searchParams.get("Start") !== null) {
 
   // minutes are worth 60 seconds. Hours are worth 60 minutes.
   var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
-  console.log(seconds);
+//  console.log(seconds);
   localStorage.setItem("reactorStart", seconds );
 }
 // Control commands
@@ -36,10 +36,10 @@ if (url.searchParams.get("Control") !== null) {
   var commandPairs = controlList.split(";");
   var j;
   for (j=0;j<commandPairs.length;j++) {
-    console.log("command pairs are: " + commandPairs[j]);
+//    console.log("command pairs are: " + commandPairs[j]);
     // Split again on the , and add to sessionStorage
     var commandPair = commandPairs[j].split(",")
-    console.log("the pair is: " + commandPair[0] + " : " + commandPair[1]);
+//    console.log("the pair is: " + commandPair[0] + " : " + commandPair[1]);
     var Chms = commandPair[0];
     var Ca = Chms.split(':');
     var Cseconds = (+Ca[0]) * 60 * 60 + (+Ca[1]) * 60 + (+Ca[2]);
@@ -57,28 +57,28 @@ if (url.searchParams.get("reactorVOL") !== null) {
 var YTtalentVOL = 50;
 // Youtube talent video
 if (url.searchParams.get("YTtalentVOL") !== null) {
-  console.log("inside YTtalentVOL search param and add to local Storage")
+//  console.log("inside YTtalentVOL search param and add to local Storage")
   YTtalentVOL = url.searchParams.get("YTtalentVOL");
   localStorage.setItem("YTtalentVOL", YTtalentVOL );
 }
 // DailyMotion talent video
-console.log("DMtalentVOL is: " + url.searchParams.get("DMtalentVOL"));
+//console.log("DMtalentVOL is: " + url.searchParams.get("DMtalentVOL"));
 var DMtalentVOL = 50;
 if (url.searchParams.get("DMtalentVOL") !== null) {
   talentVOL = url.searchParams.get("DMtalentVOL");
 }
 
-console.log("starting reactor volume is: " + reactorVOL);
-console.log("starting Youtube talent volume is: " + YTtalentVOL);
-console.log("starting DailyMotion talent volume is: " + DMtalentVOL);
+//console.log("starting reactor volume is: " + reactorVOL);
+//console.log("starting Youtube talent volume is: " + YTtalentVOL);
+//console.log("starting DailyMotion talent volume is: " + DMtalentVOL);
 // This part provides talentVideoIDString used in the combined.js loaded in this index.html.
 function getVideoIdFromURL(url) {
-  console.log("Function url is: " + url);
+//  console.log("Function url is: " + url);
   delimiter = '=',
   start = 1,
   tokens = url.split(delimiter).slice(start),
   result = tokens.join(delimiter); // those.that
-  console.log("Function url pathname is: " + result);
+//  console.log("Function url pathname is: " + result);
   return result;
 }
   if (url.searchParams.get("reactor") !== null){
@@ -108,17 +108,17 @@ function getVideoIdFromURL(url) {
   localStorage.setItem("reactorVideoID", reactorVideoIDString );
   localStorage.setItem("YTtalentVideoID", YTtalentVideoIDString );
   localStorage.setItem("DMtalentVideoID", DMtalentVideoIDString );
-  console.log("Index: YTtalentVideoURL: " + YTtalentVideoIDString);
-  console.log("Index: DMtalentVideoID: " + DMtalentVideoIDString);
-  console.log("Index: reactorVideoID: " + reactorVideoIDString);
-  console.log("Storage Length is: " + localStorage.length);
-  console.log("****************************************************");
+  //console.log("Index: YTtalentVideoURL: " + YTtalentVideoIDString);
+  //console.log("Index: DMtalentVideoID: " + DMtalentVideoIDString);
+  //console.log("Index: reactorVideoID: " + reactorVideoIDString);
+  //console.log("Storage Length is: " + localStorage.length);
+  //console.log("****************************************************");
   var i;
   for (i = 0; i < localStorage.length; i++) {
-    console.log("Local storage #" + i + "is: " + localStorage.key(i));
+//    console.log("Local storage #" + i + "is: " + localStorage.key(i));
   }
-  console.log("=======================================================");
+//  console.log("=======================================================");
   for (i = 0; i < sessionStorage.length; i++) {
-    console.log("Session storage #" + i + "is: " + sessionStorage.key(i));
+//    console.log("Session storage #" + i + "is: " + sessionStorage.key(i));
   }
   // console.log("talentVideoURL: " + talentVideoURL);
