@@ -31,8 +31,8 @@
         });
       }
       // get the first time current
-      var cueTime = 0;
-
+      var cueTime = sessionStorage.key(0);
+      var key = 0;
       function cueListener(cueTime) {
         if (parseFloat(sessionStorage.key(cueTime)) >= parseFloat(localStorage.reactortimer)) {
           console.log("=============================================")
@@ -40,9 +40,10 @@
           console.log("Current reactor time is: " + parseFloat(localStorage.reactortimer));
           console.log("hit cue point: " + sessionStorage.getItem(sessionStorage.key(cueTime)) + " at: " + sessionStorage.key(cueTime));
           console.log("----------------------------------------------")
-          cueTime++;
+          key++;
+          cueTime = sessionStorage.key(key);
         }
-        console.log("placeholder");
+        console.log("placeholder: skipped if statement");
       }
 //    setTimeout(function(){
       // 4. The API will call this function when the video player is ready.
