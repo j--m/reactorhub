@@ -62,11 +62,13 @@
         // console.log("*************  current reactor time is: " + localStorage.reactortimer);
 
         for (count = 0; count < sortedCue.length; count++) {
-          console.log("SortedCue " + count + " is: " + sortedCue[count]);
           console.log("========================================");
+          console.log("SortedCue " + count + " is: " + sortedCue[count]);
+
           console.log("current reactor time is: " + localStorage.reactortimer);
           var total = sortedCue[count]- localStorage.reactortimer;
           console.log("cue time minus current time = " + total);
+          console.log("------------------------------------------")
 
         }
         // get the reactor's current time {
