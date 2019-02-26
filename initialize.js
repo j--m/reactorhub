@@ -48,7 +48,7 @@ if (url.searchParams.get("Control") !== null) {
   }
   var k = 0;
   for (k=0;k<sessionStorage.length;k++) {
-    console.log("session storage item " + k + " is: " + sessionStorage.getItem(k));
+    console.log("session storage item " + k + " is: " + sessionStorage.getItem(sessionStorage.key(k)));
   }
 
 // default volume
