@@ -31,28 +31,42 @@
         });
       }
       // get the first time current
-      console.log("+++++++++++++ Length of sessionStorage is: " + sessionStorage.length);
-      var a = 0;
-      for (a = 0; a < 5; a++) {
-        console.log("+++++++++++ key is: " + sessionStorage.key(a) + " and the items is: " + sessionStorage.getItem(sessionStorage.key(a)));
+      // get the next lowest value key
+      // var currentLowest = 0;
+      // function getNextLowestKey(currentLowest){
+      //   var count;
+      //   var oldlowestKey = currentLowest;
+      //   for (count = 0; count <= sessionStorage.length; count++) {
+      //     //looking for something higher that the current lowers
+      //     if (sessionStorage.key(count) > currentLowest) {
+      //       currentLowest = sessionStorage.key(count);
+      //     }
+      //     // but still the lowest of them that is higher than
+      //     if (currentLowest < oldlowestKey) {
+      //       oldlowestKey = currentLowest;
+      //     }
+      //   }
+      // }
+      // Put the session storage keys into an arrady
+      var cueList [];
+      var count= 0;
+      for (count = 0; count <= sessionStorage.length; count++) {
+        cueList[count] = parseInt(sessionStorage.key(count));
+        console.log("CueList " + count +" is: " + cueList[count]);
       }
-      var cueTime = sessionStorage.key(sessionStorage.length - 1);
-      console.log("+++++ cueTime outside function: " + sessionStorage.key(sessionStorage.length - 1));
-      var key = parseInt(sessionStorage.length) -1;
-      console.log("+++++ key outside function is: " + key);
 
       function cueListener(key) {
-        console.log("Inside Function comparing: " + parseFloat(sessionStorage.key(key)) + " to " + parseFloat(localStorage.reactortimer));
-        if (parseFloat(sessionStorage.key(key)) >= parseFloat(localStorage.reactortimer)) {
-          // console.log("=============================================")
-          // console.log("Current cue is: " + parseFloat(sessionStorage.key(key)))
-          // console.log("Current reactor time is: " + parseFloat(localStorage.reactortimer));
-          // console.log("hit cue point: " + sessionStorage.getItem(sessionStorage.key(key)) + " at: " + sessionStorage.getItem(sessionStorage.key(key)));
-          // console.log("----------------------------------------------")
-          key++;
-          cueTime = sessionStorage.key(key);
-        }
-        console.log("placeholder: skipped if statement");
+        // console.log("Inside Function comparing: " + parseFloat(sessionStorage.key(key)) + " to " + parseFloat(localStorage.reactortimer));
+        // if (parseFloat(sessionStorage.key(key)) >= parseFloat(localStorage.reactortimer)) {
+        //   console.log("=============================================")
+        //   console.log("Current cue is: " + parseFloat(sessionStorage.key(key)))
+        //   console.log("Current reactor time is: " + parseFloat(localStorage.reactortimer));
+        //   console.log("hit cue point: " + sessionStorage.getItem(sessionStorage.key(key)) + " at: " + sessionStorage.getItem(sessionStorage.key(key)));
+        //   console.log("----------------------------------------------")
+        //   key++;
+        //   cueTime = sessionStorage.key(key);
+        // }
+        // console.log("placeholder: skipped if statement");
       }
 //    setTimeout(function(){
       // 4. The API will call this function when the video player is ready.
