@@ -33,7 +33,7 @@
       // get the first time current
       var cueTime = 0;
       function cueListener(cueTime) {
-        if (sessionStorage.key(cueTime)) => localStorage.reactortimer) {
+        if (parseFloat((sessionStorage.key(cueTime))) >= parseFloat(localStorage.reactortimer)) {
           console.log("hit cue point: " + sessionStorage.getItem(sessionStorage.key(cueTime)) + " at: " + sessionStorage.key(cueTime));
           cueTime++;
         }
