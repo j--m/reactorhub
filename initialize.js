@@ -34,6 +34,10 @@ if (url.searchParams.get("Control") !== null) {
   var j;
   for (j=0;j<commandPairs.length;j++) {
     console.log("command pairs are: " + commandPairs[j]);
+    // Split again on the , and add to sessionStorage
+    var commandPair = commandPairs[j].split(",")
+    console.log("the pair is: " + commandPair[0] + " : " + commandPair[1]);
+    sessionStorage.setItem(commandPair[0],commandPair[1]);
   }
 
 
