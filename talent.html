@@ -33,7 +33,7 @@
       // get the first time current
       var cueTime = sessionStorage.key(sessionStorage.length - 1);
       console.log("+++++ cueTime outside function: " + sessionStorage.key(sessionStorage.length - 1));
-      var key = sessionStorage.length - 1;
+      var key = parseInt(sessionStorage.length) - 1;
       console.log("+++++ key outside function is: " + sessionStorage.length - 1);
       function cueListener(key) {
 
