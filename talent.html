@@ -36,7 +36,7 @@
       var key = parseInt(sessionStorage.length) -1;
       console.log("+++++ key outside function is: " + key);
       function cueListener(key) {
-
+        git.log("Inside Function comparing: " + parseFloat(sessionStorage.key(key)) + " to " + parseFloat(localStorage.reactortimer));
         if (parseFloat(sessionStorage.key(key)) >= parseFloat(localStorage.reactortimer)) {
           console.log("=============================================")
           console.log("Current cue is: " + parseFloat(sessionStorage.key(key)))
