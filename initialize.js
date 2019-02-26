@@ -32,7 +32,7 @@ if (url.searchParams.get("Control") !== null) {
 // in the sessionStorage as <hh:mm:ss>:<command> key:pair
   var commandPairs = controlList.split(";");
   var j;
-  for (j=0;j<commandPairs.length;J++) {
+  for (j=0;j<commandPairs.length;j++) {
     console.log("command pairs are: " + commandPairs[j]);
   }
 
