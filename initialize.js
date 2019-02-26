@@ -46,7 +46,10 @@ if (url.searchParams.get("Control") !== null) {
     console.log("***** Cseconds is: " + Cseconds);
     sessionStorage.setItem(Cseconds,commandPair[1]);
   }
-
+  var k = 0;
+  for (k=0;k<sessionStorage.length();k++) {
+    console.log("session storage item " + k +" is: " sessionStorage.getItem(k));
+  }
 
 // default volume
 var reactorVOL = 50;
