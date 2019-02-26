@@ -32,9 +32,11 @@
       }
       // get the first time current
       var cueTime = sessionStorage.key(sessionStorage.length - 1);
-      console.log("+++ sessionStorage.key(1) is: " + sessionStorage.key(1));
+      console.log("+++++ cueTime outside function: " + sessionStorage.key(sessionStorage.length - 1));
       var key = sessionStorage.length - 1;
+      console.log("+++++ key outside function is: " + sessionStorage.length - 1);
       function cueListener(key) {
+
         if (parseFloat(sessionStorage.key(key)) >= parseFloat(localStorage.reactortimer)) {
           console.log("=============================================")
           console.log("Current cue is: " + parseFloat(sessionStorage.key(key)))
