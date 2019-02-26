@@ -48,14 +48,19 @@
       //   }
       // }
       // Put the session storage keys into an arrady
-      var cueList=[];
+      var cueList=[[]];
       var count= 0;
-      for (count = 0; count <= sessionStorage.length; count++) {
+      for (count = 0; count < sessionStorage.length; count++) {
         cueList[count] = parseInt(sessionStorage.key(count));
         console.log("CueList " + count +" is: " + cueList[count]);
       }
 
       function cueListener(key) {
+        // get the reactor's current time {
+
+        //
+
+
         // console.log("Inside Function comparing: " + parseFloat(sessionStorage.key(key)) + " to " + parseFloat(localStorage.reactortimer));
         // if (parseFloat(sessionStorage.key(key)) >= parseFloat(localStorage.reactortimer)) {
         //   console.log("=============================================")
