@@ -67,7 +67,7 @@
           //
           // console.log("current reactor time is: " + localStorage.reactortimer);
           var commandtime = sortedCue[count]- localStorage.reactortimer;
-          if(commandtime <= 0.2) {
+          if(commandtime <= 0.2 && !(commandtime < 0)) {
             var command = sessionStorage.getItem(sortedCue[count]);
             console.log("commandtime is: " + commandtime);
             console.log("reactor time is: " + localStorage.reactortimer);
