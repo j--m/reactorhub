@@ -28,6 +28,15 @@ if (url.searchParams.get("Control") !== null) {
   //3:08,pause;3:15,play;3:20,pause;3:30,play
   //localStorage.setItem("reactorVOL", reactorVOL );
 }
+// split the control list to pairs, then single items and store
+// in the sessionStorage as <hh:mm:ss>:<command> key:pair
+  var commandPairs = controlList.split(";");
+  var j;
+  for (j=0;j<commandPairs.length;J++) {
+    console.log("command pairs are: " + commandPairs[j]);
+  }
+
+
 // default volume
 var reactorVOL = 50;
 if (url.searchParams.get("reactorVOL") !== null) {
