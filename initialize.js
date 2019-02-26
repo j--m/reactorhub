@@ -36,14 +36,14 @@ if (url.searchParams.get("Control") !== null) {
   var commandPairs = controlList.split(";");
   var j;
   for (j=0;j<commandPairs.length;j++) {
-//    console.log("command pairs are: " + commandPairs[j]);
+    console.log("command pairs are: " + commandPairs[j]);
     // Split again on the , and add to sessionStorage
     var commandPair = commandPairs[j].split(",")
-//    console.log("the pair is: " + commandPair[0] + " : " + commandPair[1]);
+    console.log("the pair is: " + commandPair[0] + " : " + commandPair[1]);
     var Chms = commandPair[0];
     var Ca = Chms.split(':');
     var Cseconds = (+Ca[0]) * 60 * 60 + (+Ca[1]) * 60 + (+Ca[2]);
-//    console.log("***** Cseconds is: " + Cseconds + " The commandPair for this is: " + commandPair[1]);
+    console.log("***** Cseconds is: " + Cseconds + " The commandPair for this is: " + commandPair[1]);
     sessionStorage.setItem(Cseconds,commandPair[1]);
   }
   var k = 0;
