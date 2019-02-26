@@ -4,6 +4,9 @@ function resizeIframe(obj) {
   obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
   obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
 }
+//Clear all the Storage
+localStorage.clear();
+sessionStorage.clear();
 // get the url parameters
 var url_string = window.location.href;
 var url = new URL(url_string);
