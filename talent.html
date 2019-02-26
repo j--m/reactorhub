@@ -52,7 +52,7 @@
       var sortedCue=[[]];
       var count= 0;
       for (count = 0; count < sessionStorage.length; count++) {
-        cueList[count] = parseInt(sessionStorage.key(count));
+        cueList[count] = sessionStorage.key(count);
         console.log("CueList " + count +" is: " + cueList[count]);
       }
       sortedCue = cueList.sort(function(a, b){return a - b});
