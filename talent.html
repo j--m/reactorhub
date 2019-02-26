@@ -98,6 +98,19 @@
 
       function runcommand(command) {
         console.log(" running command: " + command);
+        switch(command) {
+          case "play":
+            player.playVideo();
+            break;
+          case "pause":
+            player.pauseVideo();
+            break;
+          case "stop":
+            player.stopVideo();
+            break;
+          default:
+            console.log("not recognized command")
+}
       }
 //    setTimeout(function(){
       // 4. The API will call this function when the video player is ready.
