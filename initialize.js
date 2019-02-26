@@ -42,7 +42,7 @@ if (url.searchParams.get("Control") !== null) {
     console.log("the pair is: " + commandPair[0] + " : " + commandPair[1]);
     var Chms = commandPair[0];
     var Ca = Chms.split(':');
-    var Cseconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+    var Cseconds = (+Ca[0]) * 60 * 60 + (+Ca[1]) * 60 + (+Ca[2]);
     console.log("***** Cseconds is: " + Cseconds);
     sessionStorage.setItem(Cseconds,commandPair[1]);
   }
