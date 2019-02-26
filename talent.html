@@ -49,10 +49,15 @@
       // }
       // Put the session storage keys into an arrady
       var cueList=[[]];
+      var sortedCue=[[]];
       var count= 0;
       for (count = 0; count < sessionStorage.length; count++) {
         cueList[count] = parseInt(sessionStorage.key(count));
         console.log("CueList " + count +" is: " + cueList[count]);
+      }
+      sortedCue = cueList.sort(function(a, b){return a - b});
+      for count = 0; count < sortedCue.length; count++) {
+        console.log("SortedCue " + count + " is: " + sortedCue[count]);
       }
 
       function cueListener(key) {
