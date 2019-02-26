@@ -16,6 +16,7 @@
 
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
+      var videotime = 0;
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('talent', {
@@ -29,15 +30,29 @@
           }
         });
       }
+      // get the first time current
+      var cueTime = 0;
+      function cueListener(cueTime) {
+        if (parseFloat(sessionStorage.key(cueTime)) => parseFloat(localStorage.reactortimer)) {
+          console.log("hit cue point: " + sessionStorage.getItem(sessionStorage.key(cueTime)) + " at: " + sessionStorage.key(cueTime));
+          cueTime++;
+        }
+
+        console.log("placeholder");
+      }
 //    setTimeout(function(){
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
 //        setTimeout(function(){
-          event.target.playVideo();
+          // event.target.playVideo();
           console.log("talent ready VideoID: " + localStorage.getItem("talentVideoID"));
           console.log("talent ready VOL: " + localStorage.getItem("YTtalentVOL"));
           player.setVolume(localStorage.getItem("YTtalentVOL"));
 //        }, 189000)
+
+          // Start the cue handler listener
+          timeupdater = setInterval(cueListener, 100);
+
       }
 
       // 5. The API calls this function when the player's state changes.
@@ -46,11 +61,11 @@
       var done = false;
       function onPlayerStateChange(event) {
         console.log("State Changed");
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          console.log("Setting timeout");
-          setTimeout(stopVideo, 12000);
-          done = true;
-        }
+        // if (event.data == YT.PlayerState.PLAYING && !done) {
+        //   console.log("Setting timeout");
+        //   setTimeout(stopVideo, 12000);
+        //   done = true;
+        // }
       }
       function stopVideo() {
         player.stopVideo();
