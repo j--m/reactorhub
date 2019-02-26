@@ -31,8 +31,9 @@
         });
       }
       // get the first time current
+      console.log()"+++++++++++++ Length of sessionStorage is: " + sessionStorage.length);
       var a = 0;
-      for (a = 0; a < 4; a++) {
+      for (a = 0; a < 5; a++) {
         console.log("+++++++++++ key is: " + sessionStorage.key(a) + " and the items is: " + sessionStorage.getItem(sessionStorage.key(a)));
       }
       var cueTime = sessionStorage.key(sessionStorage.length - 1);
