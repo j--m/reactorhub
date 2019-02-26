@@ -58,6 +58,7 @@
       sortedCue = cueList.sort(function(a, b){return a - b});
       for (count = 0; count < sortedCue.length; count++) {
         console.log("SortedCue " + count + " is: " + sortedCue[count]);
+        console.log("cue time minus current time = " + (sortedCue[count]- localStorage.reactortimer));
       }
 
       function cueListener(key) {
