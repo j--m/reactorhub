@@ -54,14 +54,14 @@
                 localStorage.reactortimer = 0;
               }
             }
-            console.log("Reator time is: " + videotime);
+//            console.log("Reator time is: " + videotime);
 
             function updateTime() {
               var oldTime = videotime;
               if(player && player.getCurrentTime) {
                 videotime = player.getCurrentTime();
 
-                console.log("reactor time is: " + videotime);
+//                console.log("reactor time is: " + videotime);
                 // document.getElementById("time").innerHTML = videotime;
               }
               if(videotime !== oldTime) {
@@ -70,11 +70,11 @@
             }
 
             function readCommands() {
-              console.log("Inside read commands function");
+//              console.log("Inside read commands function");
             }
 
             function onProgress() {
-              console.log("Inside on Progress function");
+//              console.log("Inside on Progress function");
             }
 
             // call the updateTime function every 100 ms
@@ -93,7 +93,7 @@
 //          setTimeout(stopVideo, 6000);
 //          done = true;
 //        }
-        console.log("onPlayerStateChange:  in")
+//        console.log("onPlayerStateChange:  in")
       }
       function stopVideo() {
         player.pauseVideo();

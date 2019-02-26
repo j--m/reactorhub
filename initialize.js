@@ -122,6 +122,6 @@ function getVideoIdFromURL(url) {
   }
 //  console.log("=======================================================");
   for (i = 0; i < sessionStorage.length; i++) {
-//    console.log("Session storage #" + i + "is: " + sessionStorage.key(i));
+    console.log("Session storage #" + i + "is: " + sessionStorage.key(i));
   }
   // console.log("talentVideoURL: " + talentVideoURL);
