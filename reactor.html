@@ -60,7 +60,7 @@
               var oldTime = videotime;
               if(player && player.getCurrentTime) {
                 videotime = player.getCurrentTime();
-                localStorage.reactortimer.setItem(videotime);
+                localStorage.reactortimer = videotime;
 
 //                console.log("reactor time is: " + videotime);
                 // document.getElementById("time").innerHTML = videotime;
