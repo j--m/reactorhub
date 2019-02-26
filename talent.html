@@ -32,9 +32,14 @@
       }
       // get the first time current
       var cueTime = 0;
+
       function cueListener(cueTime) {
-        if (parseFloat((sessionStorage.key(cueTime))) >= parseFloat(localStorage.reactortimer)) {
+        if (parseFloat(sessionStorage.key(cueTime)) >= parseFloat(localStorage.reactortimer)) {
+          console.log("=============================================")
+          console.log("Current cue is: " + parseFloat(sessionStorage.key(cueTime)))
+          console.log("Current reactor time is: " + parseFloat(localStorage.reactortimer));
           console.log("hit cue point: " + sessionStorage.getItem(sessionStorage.key(cueTime)) + " at: " + sessionStorage.key(cueTime));
+          console.log("----------------------------------------------")
           cueTime++;
         }
         console.log("placeholder");
