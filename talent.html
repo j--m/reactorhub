@@ -62,13 +62,17 @@
         // console.log("*************  current reactor time is: " + localStorage.reactortimer);
 
         for (count = 0; count < sortedCue.length; count++) {
-          console.log("========================================");
-          console.log("SortedCue " + count + " is: " + sortedCue[count]);
-
-          console.log("current reactor time is: " + localStorage.reactortimer);
-          var total = sortedCue[count]- localStorage.reactortimer;
-          console.log("cue time minus current time = " + total);
-          console.log("------------------------------------------")
+          // console.log("========================================");
+          // console.log("SortedCue " + count + " is: " + sortedCue[count]);
+          //
+          // console.log("current reactor time is: " + localStorage.reactortimer);
+          var commandtime = sortedCue[count]- localStorage.reactortimer;
+          if(commandtime <= 0.2) {
+            var command = sessionStorage.getItem(sortedCue[count]);
+            runcommand(command);
+          }
+          // console.log("cue time minus current time = " + total);
+          // console.log("------------------------------------------")
 
         }
         // get the reactor's current time {
@@ -87,6 +91,10 @@
         //   cueTime = sessionStorage.key(key);
         // }
         // console.log("placeholder: skipped if statement");
+      }
+
+      function runcommand(command) {
+        console.log(" running command: + command");
       }
 //    setTimeout(function(){
       // 4. The API will call this function when the video player is ready.
