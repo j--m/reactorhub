@@ -31,10 +31,15 @@
         });
       }
       // get the first time current
+      var a = 0;
+      for (a = 0; a < 4; a++) {
+        console.log("+++++++++++ key is: " + sessionStorage.key(a) + " and the items is: " + sessionStorage.getItem(sessionStorage.key(a)));
+      }
       var cueTime = sessionStorage.key(sessionStorage.length - 1);
       console.log("+++++ cueTime outside function: " + sessionStorage.key(sessionStorage.length - 1));
       var key = parseInt(sessionStorage.length) -1;
       console.log("+++++ key outside function is: " + key);
+
       function cueListener(key) {
         console.log("Inside Function comparing: " + parseFloat(sessionStorage.key(key)) + " to " + parseFloat(localStorage.reactortimer));
         if (parseFloat(sessionStorage.key(key)) >= parseFloat(localStorage.reactortimer)) {

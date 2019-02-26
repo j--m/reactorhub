@@ -15,7 +15,7 @@ var url = new URL(url_string);
 //console.log("Start parameter is: " + url.searchParams.get("Start"));
 if (url.searchParams.get("Start") !== null) {
   reactorStart = url.searchParams.get("Start");
-  console.log("Reactor Start Time: " + url.searchParams.get("Start"));
+//  console.log("Reactor Start Time: " + url.searchParams.get("Start"));
   var hms = reactorStart;   // your input string
   var a = hms.split(':'); // split it at the colons
 
@@ -27,7 +27,7 @@ if (url.searchParams.get("Start") !== null) {
 // Control commands
 if (url.searchParams.get("Control") !== null) {
   controlList = url.searchParams.get("Control");
-  console.log("Control list is: " + controlList);
+//  console.log("Control list is: " + controlList);
   //3:08,pause;3:15,play;3:20,pause;3:30,play
   //localStorage.setItem("reactorVOL", reactorVOL );
 }
@@ -43,12 +43,12 @@ if (url.searchParams.get("Control") !== null) {
     var Chms = commandPair[0];
     var Ca = Chms.split(':');
     var Cseconds = (+Ca[0]) * 60 * 60 + (+Ca[1]) * 60 + (+Ca[2]);
-    console.log("***** Cseconds is: " + Cseconds + " The commandPair for this is: " + commandPair[1]);
+//    console.log("***** Cseconds is: " + Cseconds + " The commandPair for this is: " + commandPair[1]);
     sessionStorage.setItem(Cseconds,commandPair[1]);
   }
   var k = 0;
   for (k=0;k<sessionStorage.length;k++) {
-    console.log("session storage item " + k + " is: " + sessionStorage.getItem(sessionStorage.key(k)));
+//    console.log("session storage item " + k + " is: " + sessionStorage.getItem(sessionStorage.key(k)));
   }
 
 // default volume
