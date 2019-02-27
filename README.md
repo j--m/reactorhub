@@ -33,6 +33,8 @@ paste this url into your video to see how it works (don't pause or skip around i
 
 Control=00:03:55.5,play;00:04:12,pause;00:04:42,play;00:04:47,pause;00:05:13.75,play;00:06:46,pause;00:07:30,play;00:09:18,pause;00:09:34,play  : <time>,<command>; list of times to play or pause the talent video.
 
+Start00:03:43&Start=00:03:40 : Skip to 3:40 in the reactor's video when it starts (the reactor may have given a long explaination of how to 'link & sync' the videos, which this tool should eliminate, so the reactor can specify that when using this tool, all that now useless explanation will be skipped.)
+
 What it is not designed to support:
   videos that have the target video chopped up with pieces missing to avoid copyright strikes.
   videos that have been sped up or slowed down in order to avoid copyright strikes
