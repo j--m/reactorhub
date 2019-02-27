@@ -46,16 +46,23 @@ What it is not designed to support:
 TODO
 
 [x] - provide initial volume settings on start (ie. reactor at 75% full vol, talent at 50%) (ie &StartVol:75/50)
+
 [ ] - provide dailytmotion support
+
 [ ] - provide vimieo support
+
 [ ] - provide 'scrubbing' support while keeping videos in sync.
+
 [ ] - provide ability to adjust vol at timecodes (ie. &ReactorVol0;2:02;TalentVol8;2:02,ReactorVol8;2:30,TalentVol4;2:30) (ie. mute the reactor until they start to comment on something at 2:30, when you up the reactor's vol and reduce the talen's vol so you can make out what the reactor is saying)
+
 [ ] - Provide several layouts for the two videos.
   * reactor to the left, talent to the right
   * talent to the left, reactor to the copyright
   * one video full screen with other video taking 1/9th or 1/4 size position in any of the 9/4 blocks
   * switch what video is full screen and which video is overlayed on top the full screen videos
+
 [ ] - eventually provide a tool for building the url and coding (ie. a GUI where they can enter the two video's urls, select what they want done, and enter the time in the reactor's video where that should get done, and the tool will provide the url to provide the viewers.)
+
 [ ] - long term: some kind of database of reactor videos where viewers can search for videos by the same reactor, or same talent, or category (this will probably need a part of the command line that provides info like 'reactor's name, channel, talent's name, channel, a list of reactor provided category tags.)
 
 
