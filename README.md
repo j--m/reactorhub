@@ -7,10 +7,11 @@
 
 Definitions:
   **reactor:** the person creating a video reacting to a target video
+  
   **talent:** the video being reacted to by the reactor
 
 
-How to use:
+**How to use:**
 
 The reactor records their reaction video without presenting the 'talent' video/audio in their reaction video.
 The reactor can play the talent video 'off camera & with headphones' and react, if needed  the reactor can pause the talent video and comment on it in more detail then play some more, pause again and comment, play some more .... and so on.
