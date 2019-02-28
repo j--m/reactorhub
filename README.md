@@ -1,69 +1,55 @@
 # reactorhub.github.io
-Youtube Reactor web page :
+### Youtube Reactor web page :
 
-Purpose: A javascript webpage that allows youtube reactors to react to videos without (significantly less?) fear of copyright strikes.
+**Purpose:** A javascript webpage that allows youtube reactors to react to videos without (significantly less?) fear of copyright strikes. Due to copyright claims on youtube, many video reactors have stopped presenting the video they are reacting to in their own video, and instead have started to provide the link to the target video in the description, asking the viewers to open a second windows and manually sync up the two videos on a 'count-down'. This tool does exactly the same thing, except the viewer only has to click on a link, and the reset is handled automatically. 
+
+**Disclaimer** This webpage serves up javascript code that runs in your local browser. The code just 'automates' the process of opening two browser windows (in this case two iframes, which is a standard way to show two websites on the same page) locally on your computer and clicking play/pause on the videos in question. There is little to no difference between this and you doing this manually, other than bypassing the effort to open two browser windows and try to sync properly. All it does is make it convenient for your viewers to watch the two videos with one click, especially smartphone viewers, who until now (AFAIK) had no good option for doing this. This method should also allow mobile device users to participate in your reaction videos.
 
 Definitions:
-  reactor: the person creating a video reacting to a target videos
-  talent: the subject of the video being reacted to by the reactor
-
-The workflow provided is for reactors to react to videos, so it supports control and timing of the target 'talent' video as determined by the current location of the 'reactor's' video. It supports videos recorded in the following fashion:
-
-1 - reactor introduces the video; Talent video starts playing when the reactor video reaches a specified timecode
-2 - reactor can provide the timecodes where the talent video should pause/play/pause/play where the reactor has paused the video to talk, then resumed the talent video to continue their reaction.
-
-The two videos are loaded into separate 'frames' (iframes) in your local browser. The viewer starts the reactor video, and thereafter the talent video plays and pauses where appropriate (as specified by the reactor in the url they provide to their viewers)
-
- https://reactorhub.github.io/reactorhub/index.html?reactor:<url of reactor's video>&YTtalent:<url of the video being reacted to>&reactorVOL=<0-100>&YTtalentVOL=<0-100>&Control=<hh:mm:ss.xxx>,<play/pause/stop>;<hh:mm:ss.xxx>,<play/pause/stop>...&Start=<hh:mm:ss.xxx>
-
-Here's an example of a video with multiple pauses (note: it's not an actual 'link & sync' type video, I just use it as an example as it has a lot of pausing, so shows how to use this tools .. I've also muted the volume on the 'talent' video, just to avoid the confusion in the slightly out of sync audio, that would not normally be a problem on a real 'link & sync' type video)
-
-paste this url into your video to see how it works (don't pause or skip around in the videos, this is not supported at this time. )
- https://reactorhub.github.io/reactorhub/index.html?reactor=https://www.youtube.com/watch?v=uuAEz1dKsBE&YTtalent=https://www.youtube.com/watch?v=K_xTet06SUo&reactorVOL=70&YTtalentVOL=00&Control=00:03:55.5,play;00:04:12,pause;00:04:42,play;00:04:47,pause;00:05:13.75,play;00:06:46,pause;00:07:30,play;00:09:18,pause;00:09:34,play&Start00:03:43&Start=00:03:40
-
- https://reactorhub.github.io/reactorhub/index.html : URL of this tool
-
- reactor=https://www.youtube.com/watch?v=uuAEz1dKsBE : URL of reactors videos
-
- YTtalent=https://www.youtube.com/watch?v=K_xTet06SUo : URL of the video being reacted to
-
- reactorVOL=70 : set the reactor video volume to 70%
-
- YTtalentVOL=00 : set the 'talent' video to 0% (muted)
-
-Control=00:03:55.5,play;00:04:12,pause;00:04:42,play;00:04:47,pause;00:05:13.75,play;00:06:46,pause;00:07:30,play;00:09:18,pause;00:09:34,play  : <time>,<command>; list of times to play or pause the talent video.
-
-Start00:03:43&Start=00:03:40 : Skip to 3:40 in the reactor's video when it starts (the reactor may have given a long explaination of how to 'link & sync' the videos, which this tool should eliminate, so the reactor can specify that when using this tool, all that now useless explanation will be skipped.)
-
-What it is not designed to support:
-  videos that have the target video chopped up with pieces missing to avoid copyright strikes.
-  videos that have been sped up or slowed down in order to avoid copyright strikes
-  (Presumably, this tool will eliminate the need to cut out parts and/or speed/slow videos)
-
-  Existing video's with the talent video and audio included, will still work, but at this point the viewer will need to adjust the sound manually in each video (not always possible on smartphones)
+  **reactor:** the person creating a video reacting to a target video
+  **talent:** the video being reacted to by the reactor
 
 
-TODO
+How to use:
 
-[x] - provide initial volume settings on start (ie. reactor at 75% full vol, talent at 50%) (ie &StartVol:75/50)
+The reactor records their reaction video without presenting the 'talent' video/audio in their reaction video.
+The reactor can play the talent video 'off camera & with headphones' and react, if needed  the reactor can pause the talent video and comment on it in more detail then play some more, pause again and comment, play some more .... and so on.
 
-[ ] - provide dailytmotion support
+When the reaction video is completed and uploaded to Youtube the reactor then provides in the video description a link similar to the following the their viewers can click on to watch both your reaction video and the talent video:
 
-[ ] - provide vimieo support
+https://reactorhub.github.io/reactorhub/index.html?reactor=https://www.youtube.com/watch?v=ErCxPH7HQyI&t&YTtalent=https://www.youtube.com/watch?v=9TkHpvaO09c&reactorVOL=70&YTtalentVOL=30&Control=00:03:08,play&Start=00:02:35
+(note: the link above should work, and shows an example of a video ment to be manually opened in two windows, then manually synced via spoken count down ... if you ckick the link about you do not have to worry about any of that, just click and watch.)
 
-[ ] - provide 'scrubbing' support while keeping videos in sync.
+Let's break this link down to explain the components:
+(note: ignore the '?' and '&' characters for now, they are needed, but for this purpose they just 'mark' where one command ends and the next command starts.
 
-[ ] - provide ability to adjust vol at timecodes (ie. &ReactorVol0;2:02;TalentVol8;2:02,ReactorVol8;2:30,TalentVol4;2:30) (ie. mute the reactor until they start to comment on something at 2:30, when you up the reactor's vol and reduce the talen's vol so you can make out what the reactor is saying)
+**https://reactorhub.github.io/reactorhub/index.html** : This is the url to this tool, and is the same all the time.
 
-[ ] - Provide several layouts for the two videos.
-  * reactor to the left, talent to the right
-  * talent to the left, reactor to the copyright
-  * one video full screen with other video taking 1/9th or 1/4 size position in any of the 9/4 blocks
-  * switch what video is full screen and which video is overlayed on top the full screen videos
+**reactor=https://www.youtube.com/watch?v=ErCxPH7HQyI** : this gives the browser the link to the reactor's video where they are providing a (copyright safe, because it contains no video or audio from the copyrighted work) reaction to a 'talent' video.
 
-[ ] - eventually provide a tool for building the url and coding (ie. a GUI where they can enter the two video's urls, select what they want done, and enter the time in the reactor's video where that should get done, and the tool will provide the url to provide the viewers.)
+**YTtalent=https://www.youtube.com/watch?v=9TkHpvaO09c** : this gives the browser the link to the 'talent' video; The video the reactor is reacting to. (note: this can also be a Dailymotion video as well, just use the daily motion link and use **'DMtalent'** instead of **'YTtalent'** example: DMtalent=https://www.dailymotion.com/video/k17qXd23P6yWl5mM53V
 
-[ ] - long term: some kind of database of reactor videos where viewers can search for videos by the same reactor, or same talent, or category (this will probably need a part of the command line that provides info like 'reactor's name, channel, talent's name, channel, a list of reactor provided category tags.)
+**reactorVOL=70** : This sets the initial volume of the reactor's video to 70% of maximum (if not used, the volume defaults to 50%)
+
+**YTtalentVOL=30** : This sets the initial volume of the 'talent' video to 30% of maximum. (again, if your talent video is from Dailmotion, use something like **DMtalentVOL=30** ie. **DM** instead of **YT** (If not used the volume defaults to 50%)
+
+**Control=00:03:08,play** : This tells the 'talent' video to start playing when the 'reactor's' video reaches the 3 minute and 8 second mark. This should be the time the reactor presses 'play' on the talent video and starts their reaction. Note you can have multiple of these kinds of commands, so you can play, plause, play, as many times as needed during the review. An example of using multiple of these play/pause commands would be **Control=00:03:08,play;00:03:50,pause;00:04:25,play** which would be used in a video where the reactor started their reaction at 3:08 into their video, then paused at 3:50 to talk, then resumed the playing again at 4:25.
+
+**Start=00:02:35** : This tells the tool that when starting the reactor's video, skip to the 2:35 mark and start playing from there. This might be useful if you give a long explaination on using this link, or how to do a normal 'link & sync' and want that part skipped by anyone using the 'reactorhub' link.
+
+**Limitations** : 
+  - you can pause the reactor video until the first cue-point (play) is reached, after that if you pause the reactor video the videos will be out of sync. (I will eventually get around to writing the code needed to keep both videos in sync all the times, even during unexpected stops and scrubbing of video times lines.)
+  - Some videos have 'embedding disabled, this may not work with this tool (haven't run into any yet, but I suspect this might cause an issue.
+  - If you find either video is muted, check the video controls (mouse over the video to bring up the normal video controls) and see if it got muted somehow, and unmute manually.
+  - Right now there is no controlover the video placement, it should show the videos either side by side, or one above the other. Eventually I will be creating some selectable css styles that should be able to present the videos in a layout very similar to how reactors commonly lay our their videos (picture in picture style.)
+  
+**Benefits** : Other than limiting the liklihood of the reactor being hit with copyright strikes for 'borrowing' a work of art and putting it their own video, other benefits are:
+  - works with browsers in mobile devices.
+  - Both the reactor and the talent get view counts (working on providing a way for the viewers to 'like' and comment as well
+  - Open source, you can create your own free github account, steal this code and create your own version of the program, branded to your liking.
+  
+  
 
 
-History: Feb 28, 2019 - release the first beta version that support YouTube reactor and YouTube talent videos.
+
+
