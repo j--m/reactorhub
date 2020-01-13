@@ -78,6 +78,20 @@ if (url.searchParams.get("DMtalentVOL") !== null) {
   localStorage.setItem("DMtalentVOL", DMtalentVOL );
 }
 
+if (url.searchParams.get("VMtalentVOL") !== null) {
+  VMtalentVOL = url.searchParams.get("VMtalentVOL");
+  // console.log("init: DM talent VOL is: " + DMtalentVOL);
+  VMtalentVOL = parseFloat(VMtalentVOL)/100;
+  // console.log("init: Now DM talent VOL is: " + DMtalentVOL);
+  localStorage.setItem("VMtalentVOL", VMtalentVOL );
+}
+if (url.searchParams.get("StreamabletalentVOL") !== null) {
+  StreamabletalentVOL = url.searchParams.get("StreamabletalentVOL");
+  // console.log("init: DM talent VOL is: " + DMtalentVOL);
+  StreamabletalentVOL = parseFloat(StreamabletalentVOL);
+  // console.log("init: Now DM talent VOL is: " + DMtalentVOL);
+  localStorage.setItem("StreamabletalentVOL", StreamabletalentVOL );
+}
 //console.log("starting reactor volume is: " + reactorVOL);
 //console.log("starting Youtube talent volume is: " + YTtalentVOL);
 //console.log("starting DailyMotion talent volume is: " + DMtalentVOL);
@@ -100,6 +114,26 @@ function getVideoIdFromDMURL(url) {
 //  console.log("Function url pathname is: " + result);
   return result;
 }
+function getVideoIdFromVMURL(url) {
+  //console.log("Function url is: " + url);
+  delimiter = '/',
+  start = 3,
+  tokens = url.split(delimiter).slice(start),
+  result = tokens.join(delimiter); // those.that
+  //console.log("Function url pathname is: " + result);
+  return result;
+}
+
+function getVideoIdFromStreamableURL(url) {
+  //console.log("Function url is: " + url);
+  delimiter = '/',
+  start = 3,
+  tokens = url.split(delimiter).slice(start),
+  result = tokens.join(delimiter); // those.that
+  //console.log("Function url pathname is: " + result);
+  return result;
+}
+
   if (url.searchParams.get("reactor") !== null){
     var reactorVideoURL = url.searchParams.get("reactor");
   }
@@ -111,6 +145,18 @@ function getVideoIdFromDMURL(url) {
     var DMtalentVideoURL = url.searchParams.get("DMtalent");
 //    console.log("DM Video URL is: " + DMtalentVideoURL);
     localStorage.provider = "DM";
+  }
+  if (url.searchParams.get("VMtalent") !== null){
+    var VMtalentVideoURL = url.searchParams.get("VMtalent");
+//    console.log("VM Video URL is: " + VMtalentVideoURL);
+    localStorage.provider = "VM";
+	var VMtalentVideoID = getVideoIdFromVMURL(VMtalentVideoURL);
+  }
+  if (url.searchParams.get("Streamabletalent") !== null){
+    var StreamabletalentVideoURL = url.searchParams.get("Streamabletalent");
+//    console.log("Streamable Video URL is: " + StreamabletalentVideoURL);
+    localStorage.provider = "Streamable";
+	var StreamabletalentVideoID = getVideoIdFromStreamableURL(StreamabletalentVideoURL);
   }
   if (reactorVideoURL){
     var reactorVideoID = getVideoIdFromURL(reactorVideoURL);
@@ -127,11 +173,15 @@ function getVideoIdFromDMURL(url) {
   var reactorVideoIDString = new String(reactorVideoID);
   var YTtalentVideoIDString = new String(YTtalentVideoID);
   var DMtalentVideoIDString = new String(DMtalentVideoID);
+  var VMtalentVideoIDString = new String(VMtalentVideoID);
+  var StreamabletalentVideoIDString = new String(StreamabletalentVideoID);
 //  console.log("DM Video ID Streing is: " +DMtalentVideoIDString)
   // Save to local Storage
   localStorage.setItem("reactorVideoID", reactorVideoIDString );
   localStorage.setItem("YTtalentVideoID", YTtalentVideoIDString );
   localStorage.setItem("DMtalentVideoID", DMtalentVideoIDString );
+  localStorage.setItem("VMtalentVideoID", VMtalentVideoIDString );
+  localStorage.setItem("StreamabletalentVideoID", StreamabletalentVideoIDString );
 //  console.log("local Storage DM Video ID Strring is: " + localStorage.getItem("DMtalentVideoID"));
   //console.log("Index: YTtalentVideoURL: " + YTtalentVideoIDString);
   //console.log("Index: DMtalentVideoID: " + DMtalentVideoIDString);

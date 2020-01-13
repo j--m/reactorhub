@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <body >
+<!--    test 4 <br><br> -->
+<script type="text/javascript" src="//cdn.embed.ly/player-0.1.0.min.js"></script>
+<!-- <div id='player' style="width:640px; height:360px;" ></div> -->
+<iframe id='player' allow="autoplay" autoplay="false" src="" frameborder="0" width="640px" height="360px" allowfullscreen></iframe>
+<script>
+
+	var iframe = document.getElementById('player');
+	iframe.src = "https://streamable.com/s/" + localStorage.getItem("StreamabletalentVideoID")
+	var player = new playerjs.Player(document.getElementById('player'));
+	// https://streamable.com/c6qg2
+	var videotime = 0;
+	console.log("StreamabletalentVOL "  + parseFloat(localStorage.getItem("StreamabletalentVOL")));
+	console.log("iframe.src "  + iframe.src);
+    
+
+	//Handle video ending (seek back to zero time)//
+	player.on('ended', function (evt) { player.setCurrentTime(0); player.pause() } );
+	
+	var cueList=[[]];
+	var sortedCue=[[]];
+	var count= 0;
+	for (count = 0; count < sessionStorage.length; count++) {
+		cueList[count] = sessionStorage.key(count);
+		//    console.log("CueList " + count +" is: " + cueList[count]);
+	}
+	sortedCue = cueList.sort(function(a, b){return a - b});
+
+
+	function cueListener(key) {
+	// console.log("*************  current reactor time is: " + localStorage.reactortimer);
+
+		for (count = 0; count < sortedCue.length; count++) {
+		  // console.log("========================================");
+		  // console.log("SortedCue " + count + " is: " + sortedCue[count]);
+		  //
+		  // console.log("current reactor time is: " + localStorage.reactortimer);
+		  var commandtime = sortedCue[count]- localStorage.reactortimer;
+		  if(commandtime <= 0.2 && !(commandtime < 0)) {
+			var command = sessionStorage.getItem(sortedCue[count]);
+			// console.log("commandtime is: " + commandtime);
+			// console.log("reactor time is: " + localStorage.reactortimer);
+			// console.log("cue time is: " + sessionStorage.getItem(commandtime));
+			runcommand(command);
+		  }
+		  //console.log("cue time minus current time = " + total);
+		  // console.log("------------------------------------------")
+
+		}
+	}
+	
+	function runcommand(command) {
+    // console.log("talentDM: running command: " + command);
+    switch(command) {
+      case "play":
+        player.play();
+        break;
+      case "pause":
+        player.pause();
+        break;
+      case "stop":
+        player.pause();
+        break;
+      default:
+        // console.log("talentDM: not recognized command")
+      }
+	}
+	player.on('ready', () => {
+		player.setVolume(parseFloat(localStorage.getItem("StreamabletalentVOL")));
+		timeupdater = setInterval(cueListener, 100);
+	});
+
+// -------------
+
+
+  /*var player = DM.player(document.getElementById('player'), {
+    video: localStorage.getItem("DMtalentVideoID"),
+//    width: '100%',
+//    height: '100%',
+//    queue-autoplay-next: false,
+    params: {
+      autoplay: false,
+      'queue-autoplay-next': false,
+      quality: 'auto',
+      mute: false
+    }
+  });*/
+
+  // console.log("talentDM: setting DM Volume to: " + localStorage.getItem("DMtalentVOL"))
+  // //Control functions for DM Player instance//
+  
+
+</script>
+</body>
+</html>

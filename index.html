@@ -17,10 +17,18 @@
     <script>
 //      document.getElementById('talent').setAttribute("src","talentDM.html");
       // console.log("index: provider is: " + localStorage.provider);
-      if (localStorage.provider == "YT") {
+      if (localStorage.provider == "YT") 
+	  {
         document.getElementById('talent').src='talent.html';
-      } else {
+      } else if (localStorage.provider == "DM")  
+	  {
         document.getElementById('talent').src='talentDM.html';
+      } else if (localStorage.provider == "VM")  
+	  {
+        document.getElementById('talent').src='talentVimeo.html';
+      } else if (localStorage.provider == "Streamable")  
+	  {
+        document.getElementById('talent').src='talentStreamable.html';
       }
 
     </script>
