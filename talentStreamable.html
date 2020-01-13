@@ -11,13 +11,9 @@
 	iframe.src = "https://streamable.com/s/" + localStorage.getItem("StreamabletalentVideoID")
 	var player = new playerjs.Player(document.getElementById('player'));
 	// https://streamable.com/c6qg2
-	var videotime = 0;
-	console.log("StreamabletalentVOL "  + parseFloat(localStorage.getItem("StreamabletalentVOL")));
-	console.log("iframe.src "  + iframe.src);
-    
-
+	
 	//Handle video ending (seek back to zero time)//
-	player.on('ended', function (evt) { player.setCurrentTime(0); player.pause() } );
+	player.setLoop(false); //disable video loop
 	
 	var cueList=[[]];
 	var sortedCue=[[]];
@@ -71,7 +67,7 @@
 		player.setVolume(parseFloat(localStorage.getItem("StreamabletalentVOL")));
 		timeupdater = setInterval(cueListener, 100);
 	});
-
+	
 // -------------
 
 
