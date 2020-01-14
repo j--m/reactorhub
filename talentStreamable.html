@@ -6,9 +6,19 @@
 <!-- <div id='player' style="width:640px; height:360px;" ></div> -->
 <iframe id='player' allow="autoplay" autoplay="false" src="" frameborder="0" width="640px" height="360px" allowfullscreen></iframe>
 <script>
+	function getVideoIdFromURL(url) {
+	  //console.log("Function url is: " + url);
+	  delimiter = '/',
+	  start = 3,
+	  tokens = url.split(delimiter).slice(start),
+	  result = tokens.join(delimiter); // those.that
+	  //console.log("Function url pathname is: " + result);
+	  return result;
+	}
+
 
 	var iframe = document.getElementById('player');
-	iframe.src = "https://streamable.com/s/" + localStorage.getItem("StreamabletalentVideoID")
+	iframe.src = "https://streamable.com/s/" + getVideoIdFromURL(localStorage.getItem("talentURL"))
 	var player = new playerjs.Player(document.getElementById('player'));
 	// https://streamable.com/c6qg2
 	

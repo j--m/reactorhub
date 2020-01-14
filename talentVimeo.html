@@ -5,8 +5,19 @@
 <script src="https://player.vimeo.com/api/player.js"></script>
 <div id='player' style="width:640px; height:360px;" ></div>
 <script>
+
+	function getVideoIdFromURL(url) {
+	  //console.log("Function url is: " + url);
+	  delimiter = '/',
+	  start = 3,
+	  tokens = url.split(delimiter).slice(start),
+	  result = tokens.join(delimiter); // those.that
+	  //console.log("Function url pathname is: " + result);
+	  return result;
+	}
+	
 	var VMoptions = {
-      id: localStorage.getItem("VMtalentVideoID"),
+      id: getVideoIdFromURL(localStorage.getItem("talentURL")),
 	  width: 640
     };
 

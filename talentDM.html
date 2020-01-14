@@ -5,9 +5,19 @@
 <script src='https://api.dmcdn.net/all.js'></script>
 <div id='player'></div>
 <script>
+	function getVideoIdFromURL(url) {
+	//  console.log("Function url is: " + url);
+	  delimiter = '/',
+	  start = 4,
+	  tokens = url.split(delimiter).slice(start),
+	  result = tokens.join(delimiter); // those.that
+	//  console.log("Function url pathname is: " + result);
+	  return result;
+	}
+
   var videotime = 0;
   var player = DM.player(document.getElementById('player'), {
-    video: localStorage.getItem("DMtalentVideoID"),
+    video: getVideoIdFromURL(localStorage.getItem("talentURL")),
 //    width: '100%',
 //    height: '100%',
 //    queue-autoplay-next: false,

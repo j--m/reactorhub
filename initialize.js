@@ -4,6 +4,22 @@ function resizeIframe(obj) {
   obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
   obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
 }
+
+function detectProvider(url)
+{
+	var youtubeUrls = [/youtube/,/youtu\.be/];
+	var dailymotionUrls = [/dailymotion/,/dai\.ly/];
+	var vimeoUrls = [/vimeo/];
+	var streamableUrls = [/streamable/];
+	
+	if(youtubeUrls.some(function(rx) { return rx.test(url);})) return "YT";
+	if(dailymotionUrls.some(function(rx) { return rx.test(url);})) return "DM";
+	if(vimeoUrls.some(function(rx) { return rx.test(url);})) return "VM";
+	if(streamableUrls.some(function(rx) { return rx.test(url);})) return "Streamable";
+	
+	return "UNKOWN";
+}
+
 //Clear all the Storage
 localStorage.clear();
 sessionStorage.clear();
@@ -81,102 +97,29 @@ if (url.searchParams.get("StreamabletalentVOL") !== null) {
 localStorage.setItem("talentVOL", talentVOL);
 
 
-//console.log("starting reactor volume is: " + reactorVOL);
-//console.log("starting Youtube talent volume is: " + YTtalentVOL);
-//console.log("starting DailyMotion talent volume is: " + DMtalentVOL);
-// This part provides talentVideoIDString used in the combined.js loaded in this index.html.
-function getVideoIdFromURL(url) {
-//  console.log("Function url is: " + url);
-  delimiter = '=',
-  start = 1,
-  tokens = url.split(delimiter).slice(start),
-  result = tokens.join(delimiter); // those.that
-//  console.log("Function url pathname is: " + result);
-  return result;
-}
-function getVideoIdFromDMURL(url) {
-//  console.log("Function url is: " + url);
-  delimiter = '/',
-  start = 4,
-  tokens = url.split(delimiter).slice(start),
-  result = tokens.join(delimiter); // those.that
-//  console.log("Function url pathname is: " + result);
-  return result;
-}
-function getVideoIdFromVMURL(url) {
-  //console.log("Function url is: " + url);
-  delimiter = '/',
-  start = 3,
-  tokens = url.split(delimiter).slice(start),
-  result = tokens.join(delimiter); // those.that
-  //console.log("Function url pathname is: " + result);
-  return result;
-}
+localStorage.setItem("provider", detectProvider(url.searchParams.get("talent")));
+localStorage.setItem("talentURL", url.searchParams.get("talent"));
+localStorage.setItem("reactorURL", url.searchParams.get("reactor"));
 
-function getVideoIdFromStreamableURL(url) {
-  //console.log("Function url is: " + url);
-  delimiter = '/',
-  start = 3,
-  tokens = url.split(delimiter).slice(start),
-  result = tokens.join(delimiter); // those.that
-  //console.log("Function url pathname is: " + result);
-  return result;
+// ---- retro compatibility ----
+if (url.searchParams.get("YTtalent") !== null) {
+	localStorage.setItem("talentURL", url.searchParams.get("YTtalent"));
+	localStorage.setItem("provider", "YT");
 }
-
-  if (url.searchParams.get("reactor") !== null){
-    var reactorVideoURL = url.searchParams.get("reactor");
-  }
-  if (url.searchParams.get("YTtalent") !== null) {
-    var YTtalentVideoURL = url.searchParams.get("YTtalent");
-    localStorage.provider = "YT";
-  }
-  if (url.searchParams.get("DMtalent") !== null){
-    var DMtalentVideoURL = url.searchParams.get("DMtalent");
-//    console.log("DM Video URL is: " + DMtalentVideoURL);
-    localStorage.provider = "DM";
-  }
-  if (url.searchParams.get("VMtalent") !== null){
-    var VMtalentVideoURL = url.searchParams.get("VMtalent");
-//    console.log("VM Video URL is: " + VMtalentVideoURL);
-    localStorage.provider = "VM";
-	var VMtalentVideoID = getVideoIdFromVMURL(VMtalentVideoURL);
-  }
-  if (url.searchParams.get("Streamabletalent") !== null){
-    var StreamabletalentVideoURL = url.searchParams.get("Streamabletalent");
-//    console.log("Streamable Video URL is: " + StreamabletalentVideoURL);
-    localStorage.provider = "Streamable";
-	var StreamabletalentVideoID = getVideoIdFromStreamableURL(StreamabletalentVideoURL);
-  }
-  if (reactorVideoURL){
-    var reactorVideoID = getVideoIdFromURL(reactorVideoURL);
-  }
-  if (YTtalentVideoURL){
-    var YTtalentVideoID = getVideoIdFromURL(YTtalentVideoURL);
-  }
-  if (DMtalentVideoURL ){
-    var DMtalentVideoID = getVideoIdFromDMURL(DMtalentVideoURL);
-//    console.log("DM Video ID is: " + DMtalentVideoID);
-  }
-
-  // These are the two vars we need to use as the videoId for YT.Player objects
-  var reactorVideoIDString = new String(reactorVideoID);
-  var YTtalentVideoIDString = new String(YTtalentVideoID);
-  var DMtalentVideoIDString = new String(DMtalentVideoID);
-  var VMtalentVideoIDString = new String(VMtalentVideoID);
-  var StreamabletalentVideoIDString = new String(StreamabletalentVideoID);
-//  console.log("DM Video ID Streing is: " +DMtalentVideoIDString)
-  // Save to local Storage
-  localStorage.setItem("reactorVideoID", reactorVideoIDString );
-  localStorage.setItem("YTtalentVideoID", YTtalentVideoIDString );
-  localStorage.setItem("DMtalentVideoID", DMtalentVideoIDString );
-  localStorage.setItem("VMtalentVideoID", VMtalentVideoIDString );
-  localStorage.setItem("StreamabletalentVideoID", StreamabletalentVideoIDString );
-//  console.log("local Storage DM Video ID Strring is: " + localStorage.getItem("DMtalentVideoID"));
-  //console.log("Index: YTtalentVideoURL: " + YTtalentVideoIDString);
-  //console.log("Index: DMtalentVideoID: " + DMtalentVideoIDString);
-  //console.log("Index: reactorVideoID: " + reactorVideoIDString);
-  //console.log("Storage Length is: " + localStorage.length);
-  //console.log("****************************************************");
+if (url.searchParams.get("DMtalent") !== null){
+	localStorage.setItem("talentURL", url.searchParams.get("DMtalent"));
+	localStorage.setItem("provider", "DM");
+}
+if (url.searchParams.get("VMtalent") !== null){
+	localStorage.setItem("talentURL", url.searchParams.get("VMtalent"));
+	localStorage.setItem("provider", "VM");
+}
+if (url.searchParams.get("Streamabletalent") !== null){
+	localStorage.setItem("talentURL", url.searchParams.get("Streamabletalent"));
+	localStorage.setItem("provider", "Streamable");
+}
+// ---- retro compatibility ----
+ 
   var i;
   for (i = 0; i < localStorage.length; i++) {
 //    console.log("Local storage #" + i + "is: " + localStorage.key(i));
