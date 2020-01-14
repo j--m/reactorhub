@@ -55,43 +55,32 @@ if (url.searchParams.get("Control") !== null) {
 var reactorVOL = 50;
 if (url.searchParams.get("reactorVOL") !== null) {
   reactorVOL = url.searchParams.get("reactorVOL");
-  localStorage.setItem("reactorVOL", reactorVOL );
 }
-var YTtalentVOL = 50;
+localStorage.setItem("reactorVOL", reactorVOL);
+
+var talentVOL = 50;
+if (url.searchParams.get("talentVOL") !== null) {
+  talentVOL = url.searchParams.get("talentVOL");
+}
+// ---- retro compatibility ----
 // Youtube talent video
 if (url.searchParams.get("YTtalentVOL") !== null) {
-//  console.log("inside YTtalentVOL search param and add to local Storage")
-  YTtalentVOL = url.searchParams.get("YTtalentVOL");
-  localStorage.setItem("YTtalentVOL", YTtalentVOL );
+  talentVOL = url.searchParams.get("YTtalentVOL");
 }
 // DailyMotion talent video
-//console.log("DMtalentVOL is: " + url.searchParams.get("DMtalentVOL"));
-var DMtalentVOL = 50;
-// console.log("init: DM Volume");
 if (url.searchParams.get("DMtalentVOL") !== null) {
-  DMtalentVOL = url.searchParams.get("DMtalentVOL");
-  // console.log("init: DM talent VOL is: " + DMtalentVOL);
-  DMtalentVOL = parseFloat(DMtalentVOL)/100;
-  // console.log("init: Now DM talent VOL is: " + DMtalentVOL);
-
-
-  localStorage.setItem("DMtalentVOL", DMtalentVOL );
+  talentVOL = url.searchParams.get("DMtalentVOL");
 }
-
 if (url.searchParams.get("VMtalentVOL") !== null) {
-  VMtalentVOL = url.searchParams.get("VMtalentVOL");
-  // console.log("init: DM talent VOL is: " + DMtalentVOL);
-  VMtalentVOL = parseFloat(VMtalentVOL)/100;
-  // console.log("init: Now DM talent VOL is: " + DMtalentVOL);
-  localStorage.setItem("VMtalentVOL", VMtalentVOL );
+  talentVOL = url.searchParams.get("VMtalentVOL");
 }
 if (url.searchParams.get("StreamabletalentVOL") !== null) {
-  StreamabletalentVOL = url.searchParams.get("StreamabletalentVOL");
-  // console.log("init: DM talent VOL is: " + DMtalentVOL);
-  StreamabletalentVOL = parseFloat(StreamabletalentVOL);
-  // console.log("init: Now DM talent VOL is: " + DMtalentVOL);
-  localStorage.setItem("StreamabletalentVOL", StreamabletalentVOL );
+  talentVOL = url.searchParams.get("StreamabletalentVOL");
 }
+// ---- retro compatibility end ----
+localStorage.setItem("talentVOL", talentVOL);
+
+
 //console.log("starting reactor volume is: " + reactorVOL);
 //console.log("starting Youtube talent volume is: " + YTtalentVOL);
 //console.log("starting DailyMotion talent volume is: " + DMtalentVOL);

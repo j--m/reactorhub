@@ -13,7 +13,7 @@
 	var videotime = 0;
     var player = new Vimeo.Player('player', VMoptions);
 
-    player.setVolume(parseFloat(localStorage.getItem("VMtalentVOL")));
+    player.setVolume(parseFloat(localStorage.getItem("talentVOL"))/100);
 
 	//Handle video ending (seek back to zero time)//
 	player.on('ended', function (evt) { player.setCurrentTime(0); player.pause() } );

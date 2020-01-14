@@ -64,7 +64,7 @@
       }
 	}
 	player.on('ready', () => {
-		player.setVolume(parseFloat(localStorage.getItem("StreamabletalentVOL")));
+		player.setVolume(parseFloat(localStorage.getItem("talentVOL")));
 		timeupdater = setInterval(cueListener, 100);
 	});
 	
