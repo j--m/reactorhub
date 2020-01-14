@@ -66,7 +66,7 @@
   player.addEventListener('apiready', function(event) {
     // console.log('talentDM: event '+event.type+' received on '+event.target+'!');
     // console.log("talentDM: Volume setting is: " + localStorage.getItem("DMtalentVOL"));
-	console.log(parseFloat(localStorage.getItem("talentVOL"))/100);
+	
     player.setVolume(parseFloat(localStorage.getItem("talentVOL"))/100);
     timeupdater = setInterval(cueListener, 100);
 });
