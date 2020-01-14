@@ -32,7 +32,7 @@
         player = new YT.Player('talent', {
           // height: '400',
           // width: '100%',
-          playerVars: { 'enablejsapi' : 1, 'autoplay': 0, 'controls': 1,'rel': 0, 'autohide':1,'wmode':'opaque','origin':'https://reactorhub.github.io' },
+          playerVars: { 'enablejsapi' : 1, 'autoplay': 0, 'controls': 1,'rel': 0, 'autohide':1,'wmode':'opaque','origin': location.origin },
           videoId: getVideoIdFromURL(localStorage.getItem("talentURL")),
           events: {
             'onReady': onPlayerReady,
