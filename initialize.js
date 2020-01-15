@@ -30,13 +30,16 @@ var url = new URL(url_string);
 // Reactor start time
 //console.log("Start parameter is: " + url.searchParams.get("Start"));
 if (url.searchParams.get("Start") !== null) {
-  reactorStart = url.searchParams.get("Start");
-//  console.log("Reactor Start Time: " + url.searchParams.get("Start"));
-  var hms = reactorStart;   // your input string
-  var a = hms.split(':'); // split it at the colons
-
-  // minutes are worth 60 seconds. Hours are worth 60 minutes.
-  var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+	reactorStart = url.searchParams.get("Start");
+	//  console.log("Reactor Start Time: " + url.searchParams.get("Start"));
+	var hms = reactorStart;   // your input string
+	var a = hms.split(':'); // split it at the colons
+	var seconds = 0;
+	var mult = 1;
+	while (a.length > 0) {
+		seconds += mult * parseInt(a.pop(), 10);
+		mult *= 60;
+	}
 //  console.log(seconds);
   localStorage.setItem("reactorStart", seconds );
 }
@@ -56,11 +59,17 @@ if (url.searchParams.get("Control") !== null) {
     // Split again on the , and add to sessionStorage
     var commandPair = commandPairs[j].split(",")
 //    console.log("the pair is: " + commandPair[0] + " : " + commandPair[1]);
-    var Chms = commandPair[0];
-    var Ca = Chms.split(':');
-    var Cseconds = (+Ca[0]) * 60 * 60 + (+Ca[1]) * 60 + (+Ca[2]);
+
+	var hms = commandPair[0];   // your input string
+	var a = hms.split(':'); // split it at the colons
+	var seconds = 0;
+	var mult = 1;
+	while (a.length > 0) {
+		seconds += mult * parseInt(a.pop(), 10);
+		mult *= 60;
+	}
 //    console.log("***** Cseconds is: " + Cseconds + " The commandPair for this is: " + commandPair[1]);
-    sessionStorage.setItem(Cseconds,commandPair[1]);
+    sessionStorage.setItem(seconds,commandPair[1]);
   }
   var k = 0;
   for (k=0;k<sessionStorage.length;k++) {
