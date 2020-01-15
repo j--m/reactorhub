@@ -1,0 +1,57 @@
+
+.pageTitle{
+	display:inline-block;
+	font-size:1.8rem;
+	font-weight: 600;
+	margin-bottom: 10px;
+	padding-bottom: 2px;
+	
+	border-bottom-color: rgb(206, 212, 218);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+
+.formGroupTitle{
+	font-size:1.5rem;
+	padding: 5px 0px;
+}
+
+
+.resultBox{
+	border-top-color: rgb(206, 212, 218);
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-right-color: rgb(206, 212, 218);
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-bottom-color: rgb(206, 212, 218);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-left-color: rgb(206, 212, 218);
+    border-left-style: solid;
+    border-left-width: 2px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-radius: .25rem;
+	min-height:75px;
+	padding: 5px;
+}
+.resultBoxTitle{
+	font-size:1.1rem;
+	font-weight: 600;
+	display:block;
+	padding-bottom: 5px;
+	
+}
+.generatedLink{
+	display:block;
+
+}
+
+.timeSeparator{
+	border:none;
+	background:none;
+}

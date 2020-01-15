@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="generator.css">
+	
+	<title>Reactorhub link generator</title>
+	</head>
+	<body>
+		<div class="container-fluid w-75 mt-sm-5">
+			<span class="pageTitle">Reactorhub link generator</span>
+			<form onsubmit="event.preventDefault();  generateLink(this);" >
+				<span class="formGroupTitle">Reaction video</span>
+				<div class="form-row">
+					
+					<div class="form-group col-sm-4">
+						<label for="reactorURL" class="" >URL : </label>
+						<input id="reactorURL" name="reactorURL" type="text" required class="form-control mh-sm-3" aria-describedby="reactorURLHelp" >
+						<small id="reactorURLHelp" class="form-text text-muted" >
+						Plateforms supported:
+						<ul class="">
+						  <li class="">Youtube - example : https://www.youtube.com/watch?v=xxxxxxxx</li>
+						</ul>
+						</small>
+					</div>
+					<div class="form-group col-sm-2">
+						<label for="reactorURL" class="" >Volume (%): </label>
+						<input id="reactorVOL" name="reactorVOL" type="number" min="0" max="100" value="50" required class="form-control col-sm-5">
+					</div>
+				</div>
+				
+				<span class="formGroupTitle">Talent video</span>
+				<div class="form-row">
+					<div class="form-group col-sm-4">
+						<label for="reactorURL" class="" >URL : </label>
+						<input id="talentURL" name="talentURL" type="text" required required class="form-control" aria-describedby="reactorURLHelp">
+						<small id="talentURLHelp" class="form-text text-muted">
+						Plateforms supported:
+						<ul class="">
+						  <li class="">Youtube - <i>example : https://www.youtube.com/watch?v=xxxxxxxx</i></li>
+						  <li class="">Dailymotion - <i>example : https://www.dailymotion.com/video/xxxxxxxxxxxxxxxxxxx</i></li>
+						  <li class="">Vimeo - <i>example : https://vimeo.com/xxxxxxxxx</i></li>
+						  <li class="">Streamable - <i>example : https://streamable.com/xxxxx</i></li>
+						</ul>
+						</small>
+					</div>
+					<div class="form-group col-sm-2">
+						<label for="reactorURL" class="" >Volume (%): </label>
+						<input id="talentVOL" name="talentVOL" type="number" min="0" max="100" value="50" required class="form-control col-sm-5">
+					</div>
+				</div>
+				
+				<span class="formGroupTitle">Timings</span>
+				<div class="form-row">
+					<div class="form-group col-sm-3">
+						<label for="reactorURL" class="2" >Start reactor video at : </label>
+						<div class="input-group ">
+							<input id="startTimeHH" name="startTimeHH" type="number" value="00" min="0" required class="form-control "> 
+							<span class="input-group-text timeSeparator">:</span>
+							<input id="startTimeMM" name="startTimeMM" type="number" value="00" min="0" max="59" required class="form-control "> 
+							<span class="input-group-text timeSeparator">:</span>
+							<input id="startTimeSS" name="startTimeSS" type="number" value="00" min="0" max="59" required class="form-control "> 
+						</div>
+						<small class="form-text text-muted" >Format: hh:mm:ss</small>
+					</div>
+					<div class="form-group col-sm-1"></div>
+					<div class="form-group col-sm-3">
+						<label for="reactorURL" class="" >Reaction start at : </label>
+						<div class="input-group ">
+							<input id="reactionStartTimeHH" name="reactionStartTimeHH" type="number" value="00" min="0" required class="form-control "> 
+							<span class="input-group-text timeSeparator">:</span>
+							<input id="reactionStartTimeMM" name="reactionStartTimeMM" type="number" value="00" min="0" max="59" required class="form-control "> 
+							<span class="input-group-text timeSeparator">:</span>
+							<input id="reactionStartTimeSS" name="reactionStartTimeSS" type="number" value="00" min="0" max="59" required class="form-control "> 
+							
+						</div>
+						<small class="form-text text-muted">Format: hh:mm:ss</small>
+						<!-- <input id="reactionStartTime" name="reactionStartTime" type="text" value="00:00" required class="form-control col-sm-6"> -->
+					</div>
+				</div>
+				
+				<input type="submit" class="btn btn-primary mt-sm-3" value="Generate reactionhub link" >
+			</form>
+			<div class="mt-sm-4 resultBox">
+				<span class="resultBoxTitle">Link : </span><a id="reactorHubLinkResult" class="generatedLink" target="_blank"></a>
+			</div>
+		</div>
+		
+		
+		<script>
+			var reactorhubEndpoint = "https://jeole.github.io/reactorhub/index.html";
+			function generateLink(form)
+			{
+				/*example of link : 
+				//https://jeole.github.io/reactorhub/index?reactor=https://www.youtube.com/watch?v=u1RSNc0BpyY&talent=https://www.youtube.com/watch?v=jRc9dbgiBPI&reactorVOL=90&talentVOL=10&Control=00:3:02,play&Start=00:02:52 
+				*/
+			
+				var reactorURL = form.reactorURL.value;
+				var talentURL = form.talentURL.value;
+				var reactorVOL = form.reactorVOL.value;
+				var talentVOL = form.talentVOL.value;
+				var startTime = form.startTimeHH.value + ":" + form.startTimeMM.value + ":" + form.startTimeSS.value;
+				var reactionStartTime = form.reactionStartTimeHH.value + ":" + form.reactionStartTimeMM.value + ":" + form.reactionStartTimeSS.value;
+
+				var generatedLink = reactorhubEndpoint +
+									"?reactor=" +
+									reactorURL +
+									"&talent=" +
+									talentURL + 
+									"&reactorVOL=" +
+									reactorVOL +
+									"&talentVOL=" +
+									talentVOL +
+									"&Start=" +
+									startTime +
+									"&Control=" +
+									reactionStartTime + 
+									",play" ;
+
+		  
+				document.getElementById('reactorHubLinkResult').innerHTML = generatedLink;
+				document.getElementById('reactorHubLinkResult').href = generatedLink;
+			 }
+		</script>
+	</body>
+</html>
