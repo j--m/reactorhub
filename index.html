@@ -1,36 +1,44 @@
 <!DOCTYPE html>
-
-  <head>
-    <meta charset="utf-8"/>
-      Reactor Hub - Beta 1  ()<br><br>
-    </body>
-    <script language="javascript" type="text/javascript" src="initialize.js">
-    </script>
-
-<!--    <div id="reactor"></div>
-    <div id="talent"></div> -->
-    <iframe src="reactor.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
-<!--    <iframe src="talent.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe> -->
-    <iframe src="" id="talent" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
-<!--    <iframe width=”560" height=”315" src=”reactor.js?enablejsapi=1&version=3&origin=http://reactorhub.github.io" frameborder=”0" allowfullscreen id=”talent" enablejsapi=”1" class=”yt-video”></iframe> -->
-<!--    <script language="javascript" type="text/javascript" src="reactor.js"> </script> -->
-    <script>
-//      document.getElementById('talent').setAttribute("src","talentDM.html");
-      // console.log("index: provider is: " + localStorage.provider);
-      if (localStorage.provider == "YT") 
-	  {
-        document.getElementById('talent').src='talentYT.html';
-      } else if (localStorage.provider == "DM")  
-	  {
-        document.getElementById('talent').src='talentDM.html';
-      } else if (localStorage.provider == "VM")  
-	  {
-        document.getElementById('talent').src='talentVimeo.html';
-      } else if (localStorage.provider == "Streamable")  
-	  {
-        document.getElementById('talent').src='talentStreamable.html';
-      }
-
-    </script>
-  </head>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	</head>
+		
+	<body>
+		<div class="container-fluid">
+			<h3 id="reactorhubTitle" class="d-block mx-auto text-center py-lg-3">Reactor Hub <small class="text-muted">Beta 2</small></h3>
+			<div class="row">
+				<div class="col-lg-6 col-lg-no-padding col-12 pb-1">
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe src="reactor.html" frameborder="0" scrolling="no" allowfullscreen></iframe>
+					</div>
+				</div>
+				<div class="col-lg-6 col-lg-no-padding col-12 pb-1">
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe src="" id="talent" frameborder="0" scrolling="no" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<script>
+			if (localStorage.provider == "YT") 
+			{
+				document.getElementById('talent').src='talentYT.html';
+			} else if (localStorage.provider == "DM")  
+			{
+				document.getElementById('talent').src='talentDM.html';
+			} else if (localStorage.provider == "VM")  
+			{
+				document.getElementById('talent').src='talentVimeo.html';
+			} else if (localStorage.provider == "Streamable")  
+			{
+				document.getElementById('talent').src='talentStreamable.html';
+			}
+		</script>
+		<script language="javascript" type="text/javascript" src="initialize.js">
+		</script>
+	</body>
 </html>

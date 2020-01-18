@@ -1,106 +1,92 @@
 <!DOCTYPE html>
 <html>
-  <body >
-<!--    test 4 <br><br> -->
-<script src="https://player.vimeo.com/api/player.js"></script>
-<div id='player' style="width:640px; height:360px;" ></div>
-<script>
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	</head>
+	<body >
+		<script src="https://player.vimeo.com/api/player.js"></script>
+		<div class="embed-responsive embed-responsive-16by9">
+			 <div id='player'></div>
+		</div>
 
-	function getVideoIdFromURL(url) {
-	  //console.log("Function url is: " + url);
-	  delimiter = '/',
-	  start = 3,
-	  tokens = url.split(delimiter).slice(start),
-	  result = tokens.join(delimiter); // those.that
-	  //console.log("Function url pathname is: " + result);
-	  return result;
-	}
-	
-	var VMoptions = {
-      id: getVideoIdFromURL(localStorage.getItem("talentURL")),
-	  width: 640
-    };
+		<script>
 
-	var videotime = 0;
-    var player = new Vimeo.Player('player', VMoptions);
+			function getVideoIdFromURL(url) {
+			  //console.log("Function url is: " + url);
+			  delimiter = '/',
+			  start = 3,
+			  tokens = url.split(delimiter).slice(start),
+			  result = tokens.join(delimiter); // those.that
+			  //console.log("Function url pathname is: " + result);
+			  return result;
+			}
+			
+			var VMoptions = {
+			  id: getVideoIdFromURL(localStorage.getItem("talentURL")),
+			  width: 640
+			};
 
-    player.setVolume(parseFloat(localStorage.getItem("talentVOL"))/100);
+			var videotime = 0;
+			var player = new Vimeo.Player('player', VMoptions);
 
-	//Handle video ending (seek back to zero time)//
-	player.on('ended', function (evt) { player.setCurrentTime(0); player.pause() } );
-	
-	var cueList=[[]];
-	var sortedCue=[[]];
-	var count= 0;
-	for (count = 0; count < sessionStorage.length; count++) {
-		cueList[count] = sessionStorage.key(count);
-		//    console.log("CueList " + count +" is: " + cueList[count]);
-	}
-	sortedCue = cueList.sort(function(a, b){return a - b});
+			player.setVolume(parseFloat(localStorage.getItem("talentVOL"))/100);
 
-
-	function cueListener(key) {
-	// console.log("*************  current reactor time is: " + localStorage.reactortimer);
-
-		for (count = 0; count < sortedCue.length; count++) {
-		  // console.log("========================================");
-		  // console.log("SortedCue " + count + " is: " + sortedCue[count]);
-		  //
-		  // console.log("current reactor time is: " + localStorage.reactortimer);
-		  var commandtime = sortedCue[count]- localStorage.reactortimer;
-		  if(commandtime <= 0.2 && !(commandtime < 0)) {
-			var command = sessionStorage.getItem(sortedCue[count]);
-			// console.log("commandtime is: " + commandtime);
-			// console.log("reactor time is: " + localStorage.reactortimer);
-			// console.log("cue time is: " + sessionStorage.getItem(commandtime));
-			runcommand(command);
-		  }
-		  //console.log("cue time minus current time = " + total);
-		  // console.log("------------------------------------------")
-
-		}
-	}
-	
-	function runcommand(command) {
-    // console.log("talentDM: running command: " + command);
-    switch(command) {
-      case "play":
-        player.play();
-        break;
-      case "pause":
-        player.pause();
-        break;
-      case "stop":
-        player.pause();
-        break;
-      default:
-        // console.log("talentDM: not recognized command")
-      }
-  }
-	
-	player.ready().then(function() {
-		timeupdater = setInterval(cueListener, 100);
-	});
-// -------------
+			//Handle video ending (seek back to zero time)//
+			player.on('ended', function (evt) { player.setCurrentTime(0); player.pause() } );
+			
+			var cueList=[[]];
+			var sortedCue=[[]];
+			var count= 0;
+			for (count = 0; count < sessionStorage.length; count++) {
+				cueList[count] = sessionStorage.key(count);
+				//    console.log("CueList " + count +" is: " + cueList[count]);
+			}
+			sortedCue = cueList.sort(function(a, b){return a - b});
 
 
-  /*var player = DM.player(document.getElementById('player'), {
-    video: localStorage.getItem("DMtalentVideoID"),
-//    width: '100%',
-//    height: '100%',
-//    queue-autoplay-next: false,
-    params: {
-      autoplay: false,
-      'queue-autoplay-next': false,
-      quality: 'auto',
-      mute: false
-    }
-  });*/
+			function cueListener(key) {
+			// console.log("*************  current reactor time is: " + localStorage.reactortimer);
 
-  // console.log("talentDM: setting DM Volume to: " + localStorage.getItem("DMtalentVOL"))
-  // //Control functions for DM Player instance//
-  
+				for (count = 0; count < sortedCue.length; count++) {
+				  // console.log("========================================");
+				  // console.log("SortedCue " + count + " is: " + sortedCue[count]);
+				  //
+				  // console.log("current reactor time is: " + localStorage.reactortimer);
+				  var commandtime = sortedCue[count]- localStorage.reactortimer;
+				  if(commandtime <= 0.2 && !(commandtime < 0)) {
+					var command = sessionStorage.getItem(sortedCue[count]);
+					// console.log("commandtime is: " + commandtime);
+					// console.log("reactor time is: " + localStorage.reactortimer);
+					// console.log("cue time is: " + sessionStorage.getItem(commandtime));
+					runcommand(command);
+				  }
+				  //console.log("cue time minus current time = " + total);
+				  // console.log("------------------------------------------")
 
-</script>
-</body>
+				}
+			}
+			
+			function runcommand(command) {
+			// console.log("talentDM: running command: " + command);
+			switch(command) {
+				case "play":
+					player.play();
+					break;
+				case "pause":
+					player.pause();
+					break;
+				case "stop":
+					player.pause();
+					break;
+				default:
+					// console.log("talentDM: not recognized command")
+				}
+			}
+			
+			player.ready().then(function() {
+				timeupdater = setInterval(cueListener, 100);
+			});
+
+		</script>
+	</body>
 </html>

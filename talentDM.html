@@ -1,98 +1,106 @@
 <!DOCTYPE html>
 <html>
-  <body>
-<!--    test 4 <br><br> -->
-<script src='https://api.dmcdn.net/all.js'></script>
-<div id='player'></div>
-<script>
-	function getVideoIdFromURL(url) {
-	//  console.log("Function url is: " + url);
-	  delimiter = '/',
-	  start = 4,
-	  tokens = url.split(delimiter).slice(start),
-	  result = tokens.join(delimiter); // those.that
-	//  console.log("Function url pathname is: " + result);
-	  return result;
-	}
-
-  var videotime = 0;
-  var player = DM.player(document.getElementById('player'), {
-    video: getVideoIdFromURL(localStorage.getItem("talentURL")),
-//    width: '100%',
-//    height: '100%',
-//    queue-autoplay-next: false,
-    params: {
-      autoplay: false,
-      'queue-autoplay-next': false,
-      quality: 'auto',
-      mute: false
-    }
-  });
-
-  var cueList=[[]];
-  var sortedCue=[[]];
-  var count= 0;
-  for (count = 0; count < sessionStorage.length; count++) {
-    cueList[count] = sessionStorage.key(count);
-//    console.log("CueList " + count +" is: " + cueList[count]);
-  }
-  sortedCue = cueList.sort(function(a, b){return a - b});
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	</head>
+	<body>
+		<!--    test 4 <br><br> -->
+		<script src='https://api.dmcdn.net/all.js'></script>
+		<div class="embed-responsive embed-responsive-16by9">
+			<div id='player'></div>
+		</div>
 
 
-  function cueListener(key) {
-    // console.log("*************  current reactor time is: " + localStorage.reactortimer);
+		<script>
+			function getVideoIdFromURL(url) {
+			//  console.log("Function url is: " + url);
+			  delimiter = '/',
+			  start = 4,
+			  tokens = url.split(delimiter).slice(start),
+			  result = tokens.join(delimiter); // those.that
+			//  console.log("Function url pathname is: " + result);
+			  return result;
+			}
 
-    for (count = 0; count < sortedCue.length; count++) {
-      // console.log("========================================");
-      // console.log("SortedCue " + count + " is: " + sortedCue[count]);
-      //
-      // console.log("current reactor time is: " + localStorage.reactortimer);
-      var commandtime = sortedCue[count]- localStorage.reactortimer;
-      if(commandtime <= 0.2 && !(commandtime < 0)) {
-        var command = sessionStorage.getItem(sortedCue[count]);
-        // console.log("commandtime is: " + commandtime);
-        // console.log("reactor time is: " + localStorage.reactortimer);
-        // console.log("cue time is: " + sessionStorage.getItem(commandtime));
-        runcommand(command);
-      }
-      //console.log("cue time minus current time = " + total);
-      // console.log("------------------------------------------")
+			var videotime = 0;
+			var player = DM.player(document.getElementById('player'), {
+				video: getVideoIdFromURL(localStorage.getItem("talentURL")),
+				//    width: '100%',
+				//    height: '100%',
+				//    queue-autoplay-next: false,
+				params: {
+				  autoplay: false,
+				  'queue-autoplay-next': false,
+				  quality: 'auto',
+				  mute: false
+				}
+			});
 
-    }
-  }
+			var cueList=[[]];
+			var sortedCue=[[]];
+			var count= 0;
+			for (count = 0; count < sessionStorage.length; count++) {
+				cueList[count] = sessionStorage.key(count);
+				//    console.log("CueList " + count +" is: " + cueList[count]);
+			}
+			sortedCue = cueList.sort(function(a, b){return a - b});
 
-  //Handle video ending (seek back to zero time)//
-  player.addEventListener('end', function (evt) { evt.target.currentTime = 0; evt.target.stop() } );
-  player.addEventListener('apiready', function(event) {
-    // console.log('talentDM: event '+event.type+' received on '+event.target+'!');
-    // console.log("talentDM: Volume setting is: " + localStorage.getItem("DMtalentVOL"));
-	
-    player.setVolume(parseFloat(localStorage.getItem("talentVOL"))/100);
-    timeupdater = setInterval(cueListener, 100);
-});
 
-  // console.log("talentDM: setting DM Volume to: " + localStorage.getItem("DMtalentVOL"))
-  // //Control functions for DM Player instance//
-  function runcommand(command) {
-    // console.log("talentDM: running command: " + command);
-    switch(command) {
-      case "play":
-        player.play();
-        break;
-      case "pause":
-        player.pause();
-        break;
-      case "stop":
-        player.stop();
-        break;
-      default:
-        // console.log("talentDM: not recognized command")
-      }
-  }
-  function func_Play()
-    { player.play(); }
-  function func_Pause()
-   { player.pause(); }
-</script>
-</body>
+			function cueListener(key) {
+			// console.log("*************  current reactor time is: " + localStorage.reactortimer);
+
+				for (count = 0; count < sortedCue.length; count++) {
+					// console.log("========================================");
+					// console.log("SortedCue " + count + " is: " + sortedCue[count]);
+					//
+					// console.log("current reactor time is: " + localStorage.reactortimer);
+					var commandtime = sortedCue[count]- localStorage.reactortimer;
+					if(commandtime <= 0.2 && !(commandtime < 0)) {
+						var command = sessionStorage.getItem(sortedCue[count]);
+						// console.log("commandtime is: " + commandtime);
+						// console.log("reactor time is: " + localStorage.reactortimer);
+						// console.log("cue time is: " + sessionStorage.getItem(commandtime));
+						runcommand(command);
+					}
+					//console.log("cue time minus current time = " + total);
+					// console.log("------------------------------------------")
+
+				}
+			}
+
+			//Handle video ending (seek back to zero time)//
+			player.addEventListener('end', function (evt) { evt.target.currentTime = 0; evt.target.stop() } );
+				player.addEventListener('apiready', function(event) {
+				// console.log('talentDM: event '+event.type+' received on '+event.target+'!');
+				// console.log("talentDM: Volume setting is: " + localStorage.getItem("DMtalentVOL"));
+				
+				player.setVolume(parseFloat(localStorage.getItem("talentVOL"))/100);
+				timeupdater = setInterval(cueListener, 100);
+			});
+
+			// console.log("talentDM: setting DM Volume to: " + localStorage.getItem("DMtalentVOL"))
+			// //Control functions for DM Player instance//
+			function runcommand(command) {
+				// console.log("talentDM: running command: " + command);
+				switch(command) {
+				case "play":
+					player.play();
+					break;
+				case "pause":
+					player.pause();
+					break;
+				case "stop":
+					player.stop();
+					break;
+				default:
+					// console.log("talentDM: not recognized command")
+				}
+			}
+			function func_Play()
+				{ player.play(); }
+			function func_Pause()
+			{ player.pause(); }
+			
+		</script>
+	</body>
 </html>
