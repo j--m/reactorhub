@@ -21,7 +21,13 @@ function detectProvider(url)
 }
 
 //Clear all the Storage
-localStorage.clear();
+localStorage.removeItem("reactorStart");
+localStorage.removeItem("reactorVOL");
+localStorage.removeItem("talentVOL");
+localStorage.removeItem("provider");
+localStorage.removeItem("talentURL");
+localStorage.removeItem("reactorURL");
+localStorage.removeItem("reactortimer");
 sessionStorage.clear();
 // get the url parameters
 var url_string = window.location.href;
@@ -138,3 +144,4 @@ if (url.searchParams.get("Streamabletalent") !== null){
 //    console.log("Session storage #" + i + "is: " + sessionStorage.key(i));
   }
   // console.log("talentVideoURL: " + talentVideoURL);
+

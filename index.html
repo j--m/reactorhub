@@ -4,11 +4,42 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style>
+		body.dark-theme{
+			background-color: #101010;
+		}
+		#reactorhubTitle{
+			white-space: nowrap;
+		}
+	</style>
+	
 	</head>
 		
 	<body>
 		<div class="container-fluid">
-			<h3 id="reactorhubTitle" class="d-block mx-auto text-center py-lg-3">Reactor Hub <small class="text-muted">Beta 2</small></h3>
+			
+			<header class="pb-lg-3">
+				<nav class="navbar navbar-expand-lg bg-transparent justify-content-between" id="navbar">
+					<div class="container-fluid">
+
+						<div class="navbar-collapse collapse dual-nav w-50 order-0  .d-none .d-lg-block">
+							
+						</div>
+						<h3 id="reactorhubTitle" class="navbar-text  d-block  text-center order-0 order-lg-1 w-25 mb-0">Reactor Hub <small class="text-muted">Beta 2</small></h3>
+
+						<div class="navbar-nav dual-nav w-50 order-2 justify-content-end">
+							<ul class="navbar-nav ml-auto">
+								<li class="nav-item">
+									<button class=" btn btn-dark" id="SwitchThemeButton" onclick="SwitchTheme()">Dark Mode</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</header>
+			
+			
+		
 			<div class="row">
 				<div class="col-lg-6 col-lg-no-padding col-12 pb-1">
 					<div class="embed-responsive embed-responsive-16by9">
@@ -25,6 +56,46 @@
 		
 		<script language="javascript" type="text/javascript" src="initialize.js"></script>
 		<script>
+		
+			function UpdateTheme()
+			{
+				//navbar
+				//reactorhubTitle
+				//SwitchThemeButton
+				var darkTheme = localStorage.getItem("darkTheme");
+				if(darkTheme == null) darkTheme = "false";
+				
+				var button = document.getElementById("SwitchThemeButton");
+				
+				if(darkTheme === "true"){
+					document.getElementById("navbar").classList.add("navbar-dark");
+					document.getElementById("reactorhubTitle").classList.add("dark-theme");
+					document.body.classList.add("dark-theme");
+					button.innerHTML = "Light theme";
+					button.classList.remove("btn-dark");
+					button.classList.add("btn-light");
+				}
+				else{
+					document.getElementById("navbar").classList.remove("navbar-dark");
+					document.getElementById("reactorhubTitle").classList.remove("dark-theme");
+					document.body.classList.remove("dark-theme");
+					button.innerHTML = "Dark theme";
+					button.classList.remove("btn-light");
+					button.classList.add("btn-dark");
+				}
+				
+				
+			}
+			function SwitchTheme()
+			{
+				var darkTheme = localStorage.getItem("darkTheme");
+				if(darkTheme === null ) darkTheme = "false";
+				
+				localStorage.setItem("darkTheme", (darkTheme === "true")?"false":"true");
+				UpdateTheme();
+			}
+			
+		
 			if (localStorage.provider == "YT") 
 			{
 				document.getElementById('talent').src='talentYT.html';
@@ -38,6 +109,8 @@
 			{
 				document.getElementById('talent').src='talentStreamable.html';
 			}
+						
+			UpdateTheme();
 		</script>
 		
 		
