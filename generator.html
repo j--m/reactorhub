@@ -6,12 +6,14 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="generator.css">
 	
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 	<title>Reactorhub link generator</title>
 	</head>
 	<body>
 		<div class="container-fluid w-75 mt-sm-5">
 			<span class="pageTitle">Reactorhub link generator</span>
-			<form onsubmit="event.preventDefault();  generateLink(this);" >
+			<form id="form" onsubmit="event.preventDefault();  generateLink(this);" >
 				<span class="formGroupTitle">Reaction video</span>
 				<div class="form-row">
 					
@@ -55,7 +57,7 @@
 				<span class="formGroupTitle">Timings</span>
 				<div class="form-row">
 					<div class="form-group col-sm-3">
-						<label for="reactorURL" class="2" >Start reactor video at: </label>
+						<label for="" class="2" >Start reactor video at: </label>
 						<div class="input-group ">
 							<input id="startTimeHH" name="startTimeHH" type="number" value="00" min="0" required class="form-control "> 
 							<span class="input-group-text timeSeparator">:</span>
@@ -66,8 +68,8 @@
 						<small class="form-text text-muted" >Format: hh:mm:ss</small>
 					</div>
 					<div class="form-group col-sm-1"></div>
-					<div class="form-group col-sm-3">
-						<label for="reactorURL" class="" >sync start at: </label>
+					<div class="form-group col-sm-">
+						<label for="" class="" >Sync start at: </label>
 						<div class="input-group ">
 							<input id="reactionStartTimeHH" name="reactionStartTimeHH" type="number" value="00" min="0" required class="form-control "> 
 							<span class="input-group-text timeSeparator">:</span>
@@ -80,7 +82,16 @@
 						<!-- <input id="reactionStartTime" name="reactionStartTime" type="text" value="00:00" required class="form-control col-sm-6"> -->
 					</div>
 				</div>
+				<span class="formGroupTitle">Extra steps:</span>
+				<small class=" form-text text-muted" style=""> if you paused during the reaction</small>
+				<div id="extraPauses" class="pt-2">                                                                                                                  			
+				</div>
 				
+				<div id="divAddPause" class="form-row align-items-center">
+					<div class="form-group col-sm-3">
+						<button type="button" class="btn btn-secondary align-middle d-inline-flex" onclick="addExtraPause();" ><i class="material-icons pr-1">add</i> Add pause</button>
+					</div>
+				</div>
 				<input type="submit" class="btn btn-primary mt-sm-3" value="Generate reactionhub link" >
 			</form>
 			<div class="mt-sm-4 resultBox">
@@ -91,11 +102,63 @@
 		
 		<script>
 			var reactorhubEndpoint = "https://jeole.github.io/reactorhub/index.html";
+			
+			function addExtraPause()  {
+			
+				var divAddPause = document.getElementById("divAddPause");
+				var extraPauses = document.getElementById("extraPauses");
+				extraPauses.insertAdjacentHTML('beforeend', '  	 																												\
+				<div class="form-row align-items-center extraPauseRow">                                                                                                         \
+																																							                    \
+					<div class="form-group col-12	">                                                                                           			                    \
+																																							                    \
+							<div class="input-group  ">                                                                                         			                    \
+								<label for="" class="col-form-label col-2 align-middle d-inline-flex" >                                         			                    \
+									<i class="material-icons pr-1">                                                                             			                    \
+									pause                                                                                                       			                    \
+									</i>                                                                                                        			                    \
+									Pause at:                                                                                                   			                    \
+								</label>                                                                                                        			                    \
+								<input id="extraPauseHH" name="extraPauseHH[]" type="number" value="00" min="0" required class="form-control ">                                 \
+								<span class="input-group-text timeSeparator">:</span>                                                            			                    \
+								<input id="extraPauseMM" name="extraPauseMM[]" type="number" value="00" min="0" max="59" required class="form-control ">                        \
+								<span class="input-group-text timeSeparator">:</span>                                                            			                    \
+								<input id="extraPauseSS" name="extraPauseSS[]" type="number" value="00" min="0" max="59" required class="form-control ">                        \
+								<div class="col-1" ></div>                                                                            						                    \
+								<label for="" class="col-form-label col-2 align-middle d-inline-flex" >                                         			                    \
+									<i class="material-icons pr-1">                                                                             			                    \
+									play_arrow                                                                                                  			                    \
+									</i>                                                                                                        			                    \
+									Resume at:                                                                                                  			                    \
+								</label>                                                                                                        			                    \
+								<input id="extraPlayHH" name="extraPlayHH[]" type="number" value="00" min="0" required class="form-control ">                                   \
+								<span class="input-group-text timeSeparator">:</span>                                                           			                    \
+								<input id="extraPlayMM" name="extraPlayMM[]" type="number" value="00" min="0" max="59" required class="form-control ">                          \
+								<span class="input-group-text timeSeparator">:</span>                                                           			                    \
+								<input id="extraPlaySS" name="extraPlaySS[]" type="number" value="00" min="0" max="59" required class="form-control ">                          \
+								<button type="button" class="btn btn-danger ml-4 align-middle d-inline-flex" onclick="removeExtraPause(this);" >                                \
+									<i class="material-icons pr-1">remove</i> Remove pause                                                                                      \
+								</button>                                                                                                                                       \
+							</div>                                                                                                              			                    \
+					</div>	                                                                                                                    			                    \
+				</div>                                                                                                                          			                    \
+				');
+			
+			}
+			
+			function removeExtraPause(button)
+			{
+				var divPause = button.closest(".extraPauseRow");
+				var extraPauses = document.getElementById("extraPauses");
+				extraPauses.removeChild(divPause);
+			}
+			
 			function generateLink(form)
 			{
 				/*example of link : 
 				//https://jeole.github.io/reactorhub/index?reactor=https://www.youtube.com/watch?v=u1RSNc0BpyY&talent=https://www.youtube.com/watch?v=jRc9dbgiBPI&reactorVOL=90&talentVOL=10&Control=00:3:02,play&Start=00:02:52 
 				*/
+
 			
 				var reactorURL = form.reactorURL.value;
 				var talentURL = form.talentURL.value;
@@ -103,6 +166,18 @@
 				var talentVOL = form.talentVOL.value;
 				var startTime = form.startTimeHH.value + ":" + form.startTimeMM.value + ":" + form.startTimeSS.value;
 				var reactionStartTime = form.reactionStartTimeHH.value + ":" + form.reactionStartTimeMM.value + ":" + form.reactionStartTimeSS.value;
+
+
+				var extraPauses = "";
+				for(var i = 0; i < form.extraPauseHH.length; i++)
+				{
+					extraPauses += ";";
+					extraPauses += form.extraPauseHH[i].value + ":" + form.extraPauseMM[i].value + ":" + form.extraPauseSS[i].value;
+					extraPauses += ",pause;";
+					extraPauses += form.extraPlayHH[i].value + ":" + form.extraPlayMM[i].value + ":" + form.extraPlaySS[i].value;
+					extraPauses += ",play";
+					
+				}
 
 				var generatedLink = reactorhubEndpoint +
 									"?reactor=" +
@@ -117,7 +192,8 @@
 									startTime +
 									"&Control=" +
 									reactionStartTime + 
-									",play" ;
+									",play" +
+									extraPauses ;
 
 		  
 				document.getElementById('reactorHubLinkResult').innerHTML = generatedLink;
