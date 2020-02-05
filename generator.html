@@ -169,14 +169,17 @@
 
 
 				var extraPauses = "";
-				for(var i = 0; i < form.extraPauseHH.length; i++)
+				if(form.extraPauseHH != null)
 				{
-					extraPauses += ";";
-					extraPauses += form.extraPauseHH[i].value + ":" + form.extraPauseMM[i].value + ":" + form.extraPauseSS[i].value;
-					extraPauses += ",pause;";
-					extraPauses += form.extraPlayHH[i].value + ":" + form.extraPlayMM[i].value + ":" + form.extraPlaySS[i].value;
-					extraPauses += ",play";
-					
+					for(var i = 0; i < form.extraPauseHH.length; i++)
+					{
+						extraPauses += ";";
+						extraPauses += form.extraPauseHH[i].value + ":" + form.extraPauseMM[i].value + ":" + form.extraPauseSS[i].value;
+						extraPauses += ",pause;";
+						extraPauses += form.extraPlayHH[i].value + ":" + form.extraPlayMM[i].value + ":" + form.extraPlaySS[i].value;
+						extraPauses += ",play";
+						
+					}
 				}
 
 				var generatedLink = reactorhubEndpoint +
