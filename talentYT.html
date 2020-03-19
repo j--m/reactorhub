@@ -13,13 +13,13 @@
 	<script>
 
 	function getVideoIdFromURL(url) {
-	//  console.log("Function url is: " + url);
-	  delimiter = '=',
-	  start = 1,
-	  tokens = url.split(delimiter).slice(start),
-	  result = tokens.join(delimiter); // those.that
-	//  console.log("Function url pathname is: " + result);
-	  return result;
+
+		// from : https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url
+		var rx = /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/;
+		var matches = url.match(rx);
+		var result = matches[1];
+
+		return result;
 	}
 
 
