@@ -59,11 +59,11 @@
 					<div class="form-group col-sm-3">
 						<label for="" class="2" >Start reactor video at: </label>
 						<div class="input-group ">
-							<input id="startTimeHH" name="startTimeHH" type="number" value="00" min="0" required class="form-control "> 
+							<input id="startTimeHH" name="startTimeHH" type="number" value="00" min="0" oninput="padNumberInput(this,2);" required class="form-control"> 
 							<span class="input-group-text timeSeparator">:</span>
-							<input id="startTimeMM" name="startTimeMM" type="number" value="00" min="0" max="59" required class="form-control "> 
+							<input id="startTimeMM" name="startTimeMM" type="number" value="00" min="0" max="59" oninput="padNumberInput(this,2);" required class="form-control"> 
 							<span class="input-group-text timeSeparator">:</span>
-							<input id="startTimeSS" name="startTimeSS" type="number" value="00" min="0" max="59" required class="form-control "> 
+							<input id="startTimeSS" name="startTimeSS" type="number" value="00" min="0" max="59" oninput="padNumberInput(this,2);" required class="form-control"> 
 						</div>
 						<small class="form-text text-muted" >Format: hh:mm:ss</small>
 					</div>
@@ -71,11 +71,11 @@
 					<div class="form-group col-sm-">
 						<label for="" class="" >Sync start at: </label>
 						<div class="input-group ">
-							<input id="reactionStartTimeHH" name="reactionStartTimeHH" type="number" value="00" min="0" required class="form-control "> 
+							<input id="reactionStartTimeHH" name="reactionStartTimeHH" type="number" value="00" min="0" oninput="padNumberInput(this,2);" required class="form-control"> 
 							<span class="input-group-text timeSeparator">:</span>
-							<input id="reactionStartTimeMM" name="reactionStartTimeMM" type="number" value="00" min="0" max="59" required class="form-control "> 
+							<input id="reactionStartTimeMM" name="reactionStartTimeMM" type="number" value="00" min="0" max="59" oninput="padNumberInput(this,2);" required class="form-control"> 
 							<span class="input-group-text timeSeparator">:</span>
-							<input id="reactionStartTimeSS" name="reactionStartTimeSS" type="number" value="00" min="0" max="59" required class="form-control "> 
+							<input id="reactionStartTimeSS" name="reactionStartTimeSS" type="number" value="00" min="0" max="59" oninput="padNumberInput(this,2);" required class="form-control"> 
 							
 						</div>
 						<small class="form-text text-muted">Format: hh:mm:ss</small>
@@ -107,41 +107,41 @@
 			
 				var divAddPause = document.getElementById("divAddPause");
 				var extraPauses = document.getElementById("extraPauses");
-				extraPauses.insertAdjacentHTML('beforeend', '  	 																												\
-				<div class="form-row align-items-center extraPauseRow">                                                                                                         \
-																																							                    \
-					<div class="form-group col-12	">                                                                                           			                    \
-																																							                    \
-							<div class="input-group  ">                                                                                         			                    \
-								<label for="" class="col-form-label col-2 align-middle d-inline-flex" >                                         			                    \
-									<i class="material-icons pr-1">                                                                             			                    \
-									pause                                                                                                       			                    \
-									</i>                                                                                                        			                    \
-									Pause at:                                                                                                   			                    \
-								</label>                                                                                                        			                    \
-								<input id="extraPauseHH" name="extraPauseHH[]" type="number" value="00" min="0" required class="form-control ">                                 \
-								<span class="input-group-text timeSeparator">:</span>                                                            			                    \
-								<input id="extraPauseMM" name="extraPauseMM[]" type="number" value="00" min="0" max="59" required class="form-control ">                        \
-								<span class="input-group-text timeSeparator">:</span>                                                            			                    \
-								<input id="extraPauseSS" name="extraPauseSS[]" type="number" value="00" min="0" max="59" required class="form-control ">                        \
-								<div class="col-1" ></div>                                                                            						                    \
-								<label for="" class="col-form-label col-2 align-middle d-inline-flex" >                                         			                    \
-									<i class="material-icons pr-1">                                                                             			                    \
-									play_arrow                                                                                                  			                    \
-									</i>                                                                                                        			                    \
-									Resume at:                                                                                                  			                    \
-								</label>                                                                                                        			                    \
-								<input id="extraPlayHH" name="extraPlayHH[]" type="number" value="00" min="0" required class="form-control ">                                   \
-								<span class="input-group-text timeSeparator">:</span>                                                           			                    \
-								<input id="extraPlayMM" name="extraPlayMM[]" type="number" value="00" min="0" max="59" required class="form-control ">                          \
-								<span class="input-group-text timeSeparator">:</span>                                                           			                    \
-								<input id="extraPlaySS" name="extraPlaySS[]" type="number" value="00" min="0" max="59" required class="form-control ">                          \
-								<button type="button" class="btn btn-danger ml-4 align-middle d-inline-flex" onclick="removeExtraPause(this);" >                                \
-									<i class="material-icons pr-1">remove</i> Remove pause                                                                                      \
-								</button>                                                                                                                                       \
-							</div>                                                                                                              			                    \
-					</div>	                                                                                                                    			                    \
-				</div>                                                                                                                          			                    \
+				extraPauses.insertAdjacentHTML('beforeend', '  	 																																	\
+				<div class="form-row align-items-center extraPauseRow">                                                                                                         					\
+																																																	\
+					<div class="form-group col-12	">                                                                                           			                    					\
+																																																	\
+							<div class="input-group  ">                                                                                         			                    					\
+								<label for="" class="col-form-label col-2 align-middle d-inline-flex" >                                         			                    					\
+									<i class="material-icons pr-1">                                                                             			                    					\
+									pause                                                                                                       			                    					\
+									</i>                                                                                                        			                    					\
+									Pause at:                                                                                                   			                    					\
+								</label>                                                                                                        			                    					\
+								<input id="extraPauseHH" name="extraPauseHH[]" type="number" value="00" min="0" oninput="padNumberInput(this,2);" required class="form-control ">                   \
+								<span class="input-group-text timeSeparator">:</span>                                                            			                    					\
+								<input id="extraPauseMM" name="extraPauseMM[]" type="number" value="00" min="0" max="59" oninput="padNumberInput(this,2);" required class="form-control ">          \
+								<span class="input-group-text timeSeparator">:</span>                                                            			                    					\
+								<input id="extraPauseSS" name="extraPauseSS[]" type="number" value="00" min="0" max="59" oninput="padNumberInput(this,2);" required class="form-control ">          \
+								<div class="col-1" ></div>                                                                            						                    					\
+								<label for="" class="col-form-label col-2 align-middle d-inline-flex" >                                         			                    					\
+									<i class="material-icons pr-1">                                                                             			                    					\
+									play_arrow                                                                                                  			                    					\
+									</i>                                                                                                        			                    					\
+									Resume at:                                                                                                  			                    					\
+								</label>                                                                                                        			                    					\
+								<input id="extraPlayHH" name="extraPlayHH[]" type="number" value="00" min="0" oninput="padNumberInput(this,2);" required class="form-control ">                     \
+								<span class="input-group-text timeSeparator">:</span>                                                           			                    					\
+								<input id="extraPlayMM" name="extraPlayMM[]" type="number" value="00" min="0" max="59" oninput="padNumberInput(this,2);" required class="form-control ">            \
+								<span class="input-group-text timeSeparator">:</span>                                                           			                    					\
+								<input id="extraPlaySS" name="extraPlaySS[]" type="number" value="00" min="0" max="59" oninput="padNumberInput(this,2);" required class="form-control ">            \
+								<button type="button" class="btn btn-danger ml-4 align-middle d-inline-flex" onclick="removeExtraPause(this);" >                                					\
+									<i class="material-icons pr-1">remove</i> Remove pause                                                                                      					\
+								</button>                                                                                                                                       					\
+							</div>                                                                                                              			                    					\
+					</div>	                                                                                                                    			                    					\
+				</div>                                                                                                                          			                    					\
 				');
 			
 			}
@@ -167,20 +167,28 @@
 				var startTime = form.startTimeHH.value + ":" + form.startTimeMM.value + ":" + form.startTimeSS.value;
 				var reactionStartTime = form.reactionStartTimeHH.value + ":" + form.reactionStartTimeMM.value + ":" + form.reactionStartTimeSS.value;
 
+				console.log(form.extraPauseHH);
 
 				var extraPauses = "";
-				if(form.extraPauseHH != null)
+				
+				var arrayExtraPauseHH = form.querySelectorAll("input[name='extraPauseHH[]']");
+				var arrayExtraPauseMM = form.querySelectorAll("input[name='extraPauseMM[]']");
+				var arrayExtraPauseSS = form.querySelectorAll("input[name='extraPauseSS[]']");
+				var arrayExtraPlayHH = form.querySelectorAll("input[name='extraPlayHH[]']");
+				var arrayExtraPlayMM = form.querySelectorAll("input[name='extraPlayMM[]']");
+				var arrayExtraPlaySS = form.querySelectorAll("input[name='extraPlaySS[]']");
+				
+				console.log(arrayExtraPauseHH);
+				for(var i = 0; i < arrayExtraPauseHH.length; i++)
 				{
-					for(var i = 0; i < form.extraPauseHH.length; i++)
-					{
-						extraPauses += ";";
-						extraPauses += form.extraPauseHH[i].value + ":" + form.extraPauseMM[i].value + ":" + form.extraPauseSS[i].value;
-						extraPauses += ",pause;";
-						extraPauses += form.extraPlayHH[i].value + ":" + form.extraPlayMM[i].value + ":" + form.extraPlaySS[i].value;
-						extraPauses += ",play";
-						
-					}
+					extraPauses += ";";
+					extraPauses += arrayExtraPauseHH[i].value + ":" + arrayExtraPauseMM[i].value + ":" + arrayExtraPauseSS[i].value;
+					extraPauses += ",pause;";
+					extraPauses += arrayExtraPlayHH[i].value + ":" + arrayExtraPlayMM[i].value + ":" + arrayExtraPlaySS[i].value;
+					extraPauses += ",play";
+					
 				}
+				
 
 				var generatedLink = reactorhubEndpoint +
 									"?reactor=" +
@@ -201,7 +209,18 @@
 		  
 				document.getElementById('reactorHubLinkResult').innerHTML = generatedLink;
 				document.getElementById('reactorHubLinkResult').href = generatedLink;
-			 }
+			}
+			
+			function padNumberInput(element, size)
+			{
+				element.value = pad(element.value, size);
+			}
+			// https://stackoverflow.com/questions/10073699/pad-a-number-with-leading-zeros-in-javascript (I'm lazy :o)
+			function pad(n, width, z) {
+			  z = z || '0';
+			  n = n + '';
+			  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+			}
 		</script>
 	</body>
 </html>
