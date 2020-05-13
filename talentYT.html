@@ -121,11 +121,21 @@
           case "pause":
             player.pauseVideo();
             break;
+		      case "mute":
+            player.mute();
+            break;
+          case "unmute":
+            player.unMute();
+            break;
           case "stop":
             player.stopVideo();
             break;
           default:
-            // console.log("not recognized command")
+            if(command[0]=="x")
+              player.setPlaybackRate(+command.substring(1));
+            else
+              player.seekTo(command);
+            break;
           }
       }
 //    setTimeout(function(){
