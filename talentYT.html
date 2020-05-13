@@ -121,7 +121,7 @@
           case "pause":
             player.pauseVideo();
             break;
-		      case "mute":
+          case "mute":
             player.mute();
             break;
           case "unmute":
@@ -134,7 +134,7 @@
             if(command[0]=="x")
               player.setPlaybackRate(+command.substring(1));
             else
-              player.seekTo(command);
+              player.seekTo(+command);
             break;
           }
       }
